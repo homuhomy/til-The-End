@@ -9,7 +9,7 @@ public class seasonEvent {
 
     public seasonEvent() {
 
-        season = "Spring"; //not final
+        season = "Spring"; //just to test
         randomEventName = "";
         randomEffect = "";
         int_random = 1;

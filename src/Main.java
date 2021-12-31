@@ -14,6 +14,5 @@ public class Main {
         Scanner scan;
         Random random;
 
-        new seasonEvent();
     }
 }
