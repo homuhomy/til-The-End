@@ -1,9 +1,7 @@
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.*;
 
-public class Game {
+public class titleScreen {
 
     JFrame window;
     Container con1;
@@ -15,12 +13,8 @@ public class Game {
     Font titleFont1 = new Font("Times New Roman", Font.PLAIN, 50);
     Font buttonFont = new Font("Times New Roman", Font.PLAIN, 30);
 
-    public static void main(String[] args) {
-        new Game(); //call title
-    }
-
     //to create a window
-    public Game(){
+    public titleScreen(){
 
         //to use custom font
 //        try{
@@ -44,15 +38,6 @@ public class Game {
         titleScreenPanel.setBackground(Color.black); //for debug
         //titleScreenPanel.setOpaque(false); //make it transparent
 
-
-        //make the jpanel fixed at center [doesnt work :()
-//        Box box = new Box(BoxLayout.Y_AXIS);
-//
-//        box.add(Box.createVerticalGlue());
-//        box.add(titleScreenPanel);
-//        box.add(Box.createVerticalGlue());
-
-
         //game title
         titleScreenLabel = new JLabel("TIL THE END");
         titleScreenLabel.setForeground(Color.white);
@@ -73,13 +58,12 @@ public class Game {
         loadButton.setForeground(Color.black); //color of text
         loadButton.setFont(buttonFont);
 
-
         titleScreenPanel.add(titleScreenLabel);
         startButtonPanel.add(startButton);
         startButtonPanel.add(loadButton);
         con1.add(titleScreenPanel);
         con1.add(startButtonPanel);
         window.setVisible(true);
-
     }
+
 }
