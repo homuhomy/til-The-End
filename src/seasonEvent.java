@@ -12,7 +12,7 @@ public class seasonEvent {
         season = "Spring"; //not final
         randomEventName = "";
         randomEffect = "";
-        int_random = 0;
+        int_random = 1;
 
         Random randEvent = new Random(); //instance of random class
 
