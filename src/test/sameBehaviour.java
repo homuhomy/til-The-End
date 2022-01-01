@@ -1,3 +1,5 @@
+package test;
+
 public abstract class sameBehaviour {
     protected int atkPoint;
     protected float critChance = 0.1f;

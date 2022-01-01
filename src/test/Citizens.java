@@ -1,5 +1,7 @@
+package test;
+
 /**
- * Citizens in the game
+ * test.Citizens in the game
  *
  */
 public class Citizens {

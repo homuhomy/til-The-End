@@ -1,3 +1,5 @@
+package test;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -86,9 +88,9 @@ public class titleScreen {
         con1.add(mainTextPanel);
 
         mainTextArea = new JTextArea("Event : [randomEvent]\n" +
-                "Tax received from citizens this season: [random gold]\n" + "\n" +
+                "Tax received from citizens this test.season: [random gold]\n" + "\n" +
                 "Year : [current year]\n" +
-                "Season : [current season]\n" +
+                "Season : [current test.season]\n" +
                 "Gold : [current gold accumulated]");
 
         mainTextArea.setBounds(150,100,600,250);
@@ -114,7 +116,7 @@ public class titleScreen {
         wallButton.setFont(buttonFontBig);
         choiceButtonPanel.add(wallButton);
 
-        citizenButton = new JButton("Citizens");
+        citizenButton = new JButton("test.Citizens");
         citizenButton.setForeground(Color.black);
         citizenButton.setFont(buttonFontBig);
         choiceButtonPanel.add(citizenButton);

@@ -1,3 +1,7 @@
+package test;
+
+import test.titleScreen;
+
 import java.util.Random;
 import java.util.Scanner;
 

@@ -1,3 +1,5 @@
+package test;
+
 import java.util.Random;
 
 public class season {
@@ -6,7 +8,7 @@ public class season {
 
     private static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
 
-    //different season events
+    //different test.season events
     private static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
             " Festival! Berserk, Diligent and Fearless +50 " };
     private static final String[] SUMMER_EVENTS = { "Drought! Wall's HealthPoint -50 ",
@@ -41,7 +43,7 @@ public class season {
                 || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger")))
             towerAcc = -0.2f; //tower.decreaseAccuracy(-0.2f)
 
-        // next season
+        // next test.season
         currentSeason++;
         if (currentSeason >= SEASONS.length) {
             //when it's Spring again
@@ -51,7 +53,7 @@ public class season {
     }
 
     /**
-     * Executes a random event based on the current season
+     * Executes a random event based on the current test.season
      *
      * @return the executed event
      */
