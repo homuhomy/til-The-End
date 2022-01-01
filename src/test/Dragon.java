@@ -1,7 +1,7 @@
 package test;
 
-public class dragon {
-    public class Dragon extends sameBehaviour {
+public class Dragon {
+    public class dragon extends sameBehaviour {
         private int level = 1;
         private int hp = 100;
 
@@ -11,7 +11,7 @@ public class dragon {
         /**
          * Constructor
          */
-        public Dragon() {
+        public dragon() {
             atkPoint = 7;
             recover();
         }

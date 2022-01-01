@@ -4,30 +4,24 @@ import java.util.Random;
 
 public class season {
 
-    private Citizens citizens;
-
-    private static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
+    public Citizens citizens;
+    public final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
 
     //different test.season events
-    private static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
+    public final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
             " Festival! Berserk, Diligent and Fearless +50 " };
-    private static final String[] SUMMER_EVENTS = { "Drought! Wall's HealthPoint -50 ",
+    public final String[] SUMMER_EVENTS = { "Drought! Wall's HealthPoint -50 ",
             "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50" };
-    private static final String[] AUTUMN_EVENTS = { "Rainy! Tower Accuracy -20%", "Flood! Wall�s HealthPoint -50",
+    public final String[] AUTUMN_EVENTS = { "Rainy! Tower Accuracy -20%", "Flood! Wall�s HealthPoint -50",
             "Harvest! +100 Gold" };
-    private static final String[] WINTER_EVENTS = { "Blizzard! Wall's HealthPoint -50",
+    public final String[] WINTER_EVENTS = { "Blizzard! Wall's HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
-    private int year = 1;
-    private int currentSeason = 0;
+    public int year = 1;
+    public int currentSeason = 0;
 
-    String season;
-    String randomEventName;
-    String randomEffect;
-    private Random random;
-    int upperbound;
-    int int_random;
-    int gold = 200;
+    public Random random;
+    public int gold = 200;
     String event;
 
     //tower
@@ -59,7 +53,7 @@ public class season {
      */
 
 
-    private String executeRandomEvent() {
+    public String executeRandomEvent() {
 
         // set random event
         String event = "";

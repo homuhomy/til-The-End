@@ -6,12 +6,12 @@ package test;
  */
 public class Citizens {
 
-    private int emotional = 10;
-    private int nervous = 10;
-    private int lazy = 10;
-    private int berserk = 10;
-    private int diligent = 10;
-    private int fearless = 10;
+    public int emotional = 10;
+    public int nervous = 10;
+    public int lazy = 10;
+    public int berserk = 10;
+    public int diligent = 10;
+    public int fearless = 10;
 
     public void decreaseEmotional() {
         Math.max(emotional - 50, 0);
@@ -67,11 +67,11 @@ public class Citizens {
      * displays the stats of the citizens
      */
     public void displayStats() {
-        System.out.println("Citizen's Emotional (Decrease Tower�s AttackPoint by 1) : " + emotional);
+        System.out.println("Citizen's Emotional (Decrease Tower's AttackPoint by 1) : " + emotional);
         System.out.println("Citizen's Nervous (Decrease Tower Accuracy Percentage by 5%) : " + nervous);
-        System.out.println("Citizen's Lazy (Decrease Wall�s HealthPoint by 100) : " + lazy);
-        System.out.println("Citizen's Berserk (Increase Tower�s AttackPoint by 1) : " + berserk);
-        System.out.println("Citizen's Diligent (Increase Wall�s HealthPoint by 75) : " + diligent);
+        System.out.println("Citizen's Lazy (Decrease Wall's HealthPoint by 100) : " + lazy);
+        System.out.println("Citizen's Berserk (Increase Tower's AttackPoint by 1) : " + berserk);
+        System.out.println("Citizen's Diligent (Increase Wall's HealthPoint by 75) : " + diligent);
         System.out.println("Citizen's Fearless (Increase Tower Critical Chance Percentage by 5%) : " + fearless);
     }
 

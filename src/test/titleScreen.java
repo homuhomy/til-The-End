@@ -116,7 +116,7 @@ public class titleScreen {
         wallButton.setFont(buttonFontBig);
         choiceButtonPanel.add(wallButton);
 
-        citizenButton = new JButton("test.Citizens");
+        citizenButton = new JButton("Citizens");
         citizenButton.setForeground(Color.black);
         citizenButton.setFont(buttonFontBig);
         choiceButtonPanel.add(citizenButton);
