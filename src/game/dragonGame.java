@@ -1,4 +1,4 @@
-package test;
+package game;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -6,34 +6,31 @@ import java.util.Scanner;
 public class dragonGame {
 
     //seasons
-    private static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
+    public static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
 
     //different season events
-    private static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
+    public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
             " Festival! Berserk, Diligent and Fearless +50 " };
-    private static final String[] SUMMER_EVENTS = { "Drought! Wall�s HealthPoint -50 ",
+    public static final String[] SUMMER_EVENTS = { "Drought! Wall�s HealthPoint -50 ",
             "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50" };
-    private static final String[] AUTUMN_EVENTS = { "Rainy! Tower Accuracy -20%", "Flood! Wall�s HealthPoint -50",
+    public static final String[] AUTUMN_EVENTS = { "Rainy! Tower Accuracy -20%", "Flood! Wall�s HealthPoint -50",
             "Harvest! +100 Gold" };
-    private static final String[] WINTER_EVENTS = { "Blizzard! Wall�s HealthPoint -50",
+    public static final String[] WINTER_EVENTS = { "Blizzard! Wall�s HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
-
-    //taxation amounts
-    private static final int[] TAX_AMOUNTS = { 200, 250, 300, 350, 400 };
 
     private Dragon dragon;
     //private Tower tower;
     //private Wall wall;
-    private Citizens citizens;
+    public Citizens citizens;
 
-    private int year = 1;
-    private int currentSeason = 0;
-    private int tax = 200;
-    private int gold = 200;
-    private String event;
+    public int year = 1;
+    public  int currentSeason = 0;
+    public  int tax = 200;
+    public int gold = 200;
+    public String event;
 
-    private Scanner scan;
-    private Random random;
+    public Scanner scan;
+    public Random random;
 
     /**
      * Constructor

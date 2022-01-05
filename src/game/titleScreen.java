@@ -1,4 +1,4 @@
-package test;
+package game;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -89,7 +89,7 @@ public class titleScreen {
 
         mainTextArea = new JTextArea("Event : [randomEvent]\n" +
                 "Tax received from citizens this test.season: [random gold]\n" + "\n" +
-                "Year : [current year]\n" +
+                "Year : [current year] \n" +
                 "Season : [current test.season]\n" +
                 "Gold : [current gold accumulated]");
 
@@ -126,43 +126,7 @@ public class titleScreen {
         continueButton.setFont(buttonFontBig);
         choiceButtonPanel.add(continueButton);
 
-//        hpPanel = new JPanel();
-//        hpPanel.setBounds(100,15,600,50);
-//        hpPanel.setBackground(Color.black);
-//        hpPanel.setLayout(new GridLayout(1,4));
-//        con1.add(hpPanel);
-
-//        //this one for dragonAttack
-//        dragonHpLabel = new JLabel("Dragon HP: ");
-//        dragonHpLabel.setFont(buttonFontSmall);
-//        dragonHpLabel.setForeground(Color.white);
-//        hpPanel.add(dragonHpLabel);
-//
-//        dragonHpLabelNum = new JLabel();
-//        dragonHpLabelNum.setFont(buttonFontSmall);
-//        dragonHpLabelNum.setForeground(Color.white);
-//        dragonHpLabel.add(dragonHpLabelNum);
-//
-//        wallHpLabel= new JLabel("Wall HP: ");
-//        wallHpLabel.setFont(buttonFontSmall);
-//        wallHpLabel.setForeground(Color.white);
-//        hpPanel.add(wallHpLabel);
-//
-//        wallHpLabelNum = new JLabel("5");
-//        wallHpLabelNum.setFont(buttonFontSmall);
-//        wallHpLabelNum.setForeground(Color.white);
-//        wallHpLabel.add(wallHpLabelNum);
-//
-//        playerSetup();
-
-    }
-
-//    public void playerSetup(){
-//        wallHp = 150;
-//        dragonHp = 100;
-//        dragonHpLabelNum.setText("" +dragonHp);
-//        wallHpLabelNum.setText("" + wallHp);
-//    }
+}
 
     public class titleScreenHandler implements ActionListener{
         @Override

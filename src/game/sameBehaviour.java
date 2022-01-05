@@ -1,4 +1,4 @@
-package test;
+package game;
 
 public abstract class sameBehaviour {
     protected int atkPoint;

@@ -1,4 +1,4 @@
-package test;
+package game;
 
 public class Dragon {
     public class dragon extends sameBehaviour {
@@ -17,7 +17,7 @@ public class Dragon {
         }
 
         /**
-         * Recovers the dragon
+         * Recovers the dragon (after it flee)
          */
         public void recover() {
             currentHp = hp;
