@@ -56,6 +56,7 @@ public class dragonGame {
      * MAIN METHOD
      */
     public static void main(String args[]) {
+
         new dragonGame().run();
     }
 }
