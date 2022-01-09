@@ -72,11 +72,11 @@ public class dragonGame {
             //apply triggered emotions (from citizens) if any
 
             //put dragon attack method here
-            dragonAttack();
+            //dragonAttack();
 
             //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
-            dragon.levelUp();
-            dragon.recover();
+            //dragon.levelUp();
+            //dragon.recover();
 
             // reset event's temporary effects
             if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy"))
