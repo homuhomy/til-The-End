@@ -212,6 +212,79 @@ public class dragonGame {
     }
 
     /**
+     * Shows the citizens menu upgrades
+     */
+    private void citizensMenu() {
+        int option = 0;
+        do {
+//            citizens.displayStats();
+//            System.out.println("\n");
+//            System.out.println("1. Decrease Emotional (50 Gold -> 50 Emotional Point)");
+//            System.out.println("2. Decrease Nervous (50 Gold -> 50 Nervous Point)");
+//            System.out.println("3. Decrease Lazy (50 Gold -> 50 Lazy Point)");
+//            System.out.println("4. Increase Berserk (50 Gold -> 50 Berserk Point)");
+//            System.out.println("5. Increase Diligent (50 Gold -> 50 Diligent Point)");
+//            System.out.println("6. Increase Fearless (50 Gold -> 50 Fearless Point)");
+//            System.out.println("7. Back to Menu");
+//            System.out.print("Please Enter your command: ");
+//            option = scan.nextInt();
+
+            if (option != 7 && gold < 50)
+                System.out.println("You do not have enough gold to upgrade.");
+            else {
+                switch (option) {
+                    case 1:
+                        gold -= 50;
+                        citizens.decreaseEmotional();
+                        System.out.println("Citizens Emotional decreased -50");
+                        break;
+                    case 2:
+                        gold -= 50;
+                        citizens.decreaseNervous();
+                        System.out.println("Citizens Nervous decreased -50");
+                        break;
+                    case 3:
+                        gold -= 50;
+                        citizens.decreaseLazy();
+                        System.out.println("Citizens Lazy decreased -50");
+                        break;
+                    case 4:
+                        gold -= 50;
+                        citizens.increaseBerserk();
+                        System.out.println("Citizens Berserk Increased +50");
+                        break;
+                    case 5:
+                        gold -= 50;
+                        citizens.increaseDiligent();
+                        System.out.println("Citizens Diligent Increased +50");
+                        break;
+                    case 6:
+                        gold -= 50;
+                        citizens.increaseFearless();
+                        System.out.println("Citizens Fearless Increased +50");
+                        break;
+                    case 7:
+                        break;
+
+                    default:
+                        System.out.println("Invalid Option Selected.");
+                        break;
+                }
+            }
+
+        } while (option != 7);
+    }
+
+    /**
+     * Shows the wall menu upgrades
+     */
+
+    /**
+     * Shows the tower menu upgrades
+     */
+
+
+    /**
      * Performs dragon attack. The dragon attacks 10 times
      */
 

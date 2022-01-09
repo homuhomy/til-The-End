@@ -9,7 +9,9 @@ public class Tower<TowerStats> extends sameBehaviour {
     public int getYear() {
         return year;
     }
-    public String getSEASONS() { return SEASONS; }
+    public String getSEASONS() {
+        return SEASONS;
+    }
     public int getGold() {
         return gold;
     }
@@ -17,14 +19,17 @@ public class Tower<TowerStats> extends sameBehaviour {
     public void TowerStats() {
         int TowerStats = 0;
 
+        //TowerStats = option
         switch (TowerStats){
-            case 1:
+            case 1: //increase tower attack point
                 gold -= 100;
                 atkPoint ++;
                 break;
-            case 2:
+            case 2: //increase tower
                 gold -= 100;
                 critChance += 5;
+                //u can do this instead:
+                //tower.upAccuracy
                 if (critChance > 50)
                     critChance = 50;
                 break;
