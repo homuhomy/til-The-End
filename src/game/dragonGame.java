@@ -69,7 +69,31 @@ public class dragonGame {
             //upgrade options
 
 
-            //apply triggered emotions (from citizens) if any
+            // apply triggered emotions (from citizens) if any and to tower/wall stats
+            if (citizens.getEmotional() >= 100) {
+                //tower.decreaseAtkPoint();
+                citizens.increaseEmotional(-100);
+            }
+            if (citizens.getNervous() >= 100) {
+                //tower.decreaseAccuracy(0.05f);
+                citizens.increaseNervous(-100);
+            }
+            if (citizens.getLazy() >= 100) {
+                //wall.decreaseHp(100);
+                citizens.increaseLazy(-100);
+            }
+            if (citizens.getBerserk() >= 100) {
+                //tower.upAtkPoint();
+                citizens.increaseBerserk(-100);
+            }
+            if (citizens.getDiligent() >= 100) {
+                //wall.upHp();
+                citizens.increaseDiligent(-100);
+            }
+            if (citizens.getFearless() >= 100) {
+                //tower.upCritChance();
+                citizens.increaseFearless(-100);
+            }
 
             //put dragon attack method here
             //dragonAttack();
@@ -83,17 +107,13 @@ public class dragonGame {
                     || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger")))
                 //tower.decreaseAccuracy(-0.2f);
 
-                // go to next season
-                currentSeason++;
+            // go to next season
+            currentSeason++;
             if (currentSeason >= SEASONS.length) {
                 currentSeason = 0;
                 year++;
             }
         }
-
-
-
-
     }
 
     /**
