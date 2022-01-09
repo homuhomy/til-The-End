@@ -50,6 +50,123 @@ public class dragonGame {
      */
     public void run(){
         //run the game
+        //copy menu game code here for menu
+
+        //code for main menu
+        //code for command panel
+            //upgrade options
+
+
+        //apply triggered emotions if any
+
+        //dragon attack code here
+
+        // reset event's temporary effects
+
+        // go to next season
+        currentSeason++;
+        if (currentSeason >= SEASONS.length) {
+            currentSeason = 0;
+            year++;
+        }
+
+
+
+    }
+
+    /**
+     * Executes a random event based on the current season
+     *
+     * @return the executed event
+     */
+    private String executeRandomEvent() {
+
+        // set random event
+        String event = "";
+        int eventIndex = random.nextInt(3);
+        switch (SEASONS[currentSeason]) {
+            case "Spring":
+                event = SPRING_EVENTS[eventIndex];
+                break;
+            case "Summer":
+                event = SUMMER_EVENTS[eventIndex];
+                break;
+            case "Autumn":
+                event = AUTUMN_EVENTS[eventIndex];
+                break;
+            case "Winter":
+                event = WINTER_EVENTS[eventIndex];
+                break;
+        }
+
+        // apply event
+        switch (SEASONS[currentSeason]) {
+            case "Spring":
+                switch (eventIndex) {
+                    case 0:
+                        tower.upAtkPoint();
+                        break;
+                    case 1:
+                        gold += 100;
+                        break;
+                    case 2:
+                        citizens.increaseBerserk();
+                        citizens.increaseDiligent();
+                        citizens.increaseFearless();
+                        break;
+                }
+                break;
+            case "Summer":
+                switch (eventIndex) {
+                    case 0:
+                        wall.decreaseHp(50);
+                        break;
+                    case 1:
+                        citizens.increaseBerserk();
+                        citizens.increaseDiligent();
+                        citizens.increaseFearless();
+                        break;
+                    case 2:
+                        citizens.increaseEmotional(50);
+                        citizens.increaseNervous(50);
+                        citizens.increaseLazy(50);
+                        break;
+                }
+                break;
+            case "Autumn":
+                switch (eventIndex) {
+                    case 0:
+                        tower.decreaseAccuracy(0.2f);// temporary
+                        break;
+                    case 1:
+                        wall.decreaseHp(50);
+                        break;
+                    case 2:
+                        gold += 100;
+                        break;
+                }
+                break;
+            case "Winter":
+                switch (eventIndex) {
+                    case 0:
+                        wall.decreaseHp(50);
+                        break;
+                    case 1:
+                        citizens.increaseEmotional(50);
+                        citizens.increaseNervous(50);
+                        citizens.increaseLazy(50);
+                        break;
+                    case 2:
+                        tower.decreaseAccuracy(0.2f);// temporary
+                        break;
+                    case 3:
+                        gold += 100;
+                        break;
+                }
+                break;
+        }
+
+        return event;
     }
 
     /**

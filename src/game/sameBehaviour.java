@@ -14,6 +14,7 @@ public abstract class sameBehaviour {
 
     //getters
     public float getCritChance() {
+
         return critChance;
     }
 
