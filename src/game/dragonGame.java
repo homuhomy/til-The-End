@@ -11,11 +11,11 @@ public class dragonGame {
     //different season events
     public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
             " Festival! Berserk, Diligent and Fearless +50 " };
-    public static final String[] SUMMER_EVENTS = { "Drought! Wall�s HealthPoint -50 ",
+    public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
             "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50" };
-    public static final String[] AUTUMN_EVENTS = { "Rainy! Tower Accuracy -20%", "Flood! Wall�s HealthPoint -50",
+    public static final String[] AUTUMN_EVENTS = { "Oh no it's rainy! Tower Accuracy -20%", "Oh no it's the flood! Wall's HealthPoint -50",
             "Harvest! +100 Gold" };
-    public static final String[] WINTER_EVENTS = { "Blizzard! Wall�s HealthPoint -50",
+    public static final String[] WINTER_EVENTS = { "Oh no it's the blizzard! Wall's HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
     private Dragon dragon;
