@@ -26,6 +26,7 @@ public class dragonGame {
     public int year = 1;
     public  int currentSeason = 0;
     public  int tax = 200;
+    public int RandomGold = 0;
     public int gold = 200;
     public String event;
 
@@ -49,36 +50,47 @@ public class dragonGame {
      * run the game
      */
     public void run(){
-        //run the game
 
         //save and load game option
 
         //game loop starts here
-        //copy menu game code here for menu
+        while(true){
+            //execute random event
+            event = executeRandomEvent();
+            //execute tax from citizens
+            ExecuteTax();
+            tax = RandomGold;
+            gold += tax;
 
-        //code for main menu
-        //code for command panel
+            //copy menu game code here for menu
+
+            //code for main menu
+            //code for command panel
             //upgrade options
 
 
-        //apply triggered emotions (from citizens) if any
+            //apply triggered emotions (from citizens) if any
 
-        //put dragon attack method here
-        dragonAttack();
-        dragon.levelUp();
-        dragon.recover();
+            //put dragon attack method here
+            dragonAttack();
 
-        // reset event's temporary effects
-        if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy"))
-                || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger")))
-            //tower.decreaseAccuracy(-0.2f);
+            //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
+            dragon.levelUp();
+            dragon.recover();
 
-        // go to next season
-        currentSeason++;
-        if (currentSeason >= SEASONS.length) {
-            currentSeason = 0;
-            year++;
+            // reset event's temporary effects
+            if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy"))
+                    || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger")))
+                //tower.decreaseAccuracy(-0.2f);
+
+                // go to next season
+                currentSeason++;
+            if (currentSeason >= SEASONS.length) {
+                currentSeason = 0;
+                year++;
+            }
         }
+
 
 
 
@@ -185,6 +197,30 @@ public class dragonGame {
 
     //put dragon attack method code here
 
+    /**
+     * Perform random tax from citizens
+     */
+    public int ExecuteTax(){
+
+        int [] randomGold = {200, 250, 300, 350, 400};
+        Random random = new Random();
+        int randomGoldIndex = random.nextInt(5);
+        //System.out.println(randomGoldIndex);
+        switch (randomGoldIndex){
+            case 0:RandomGold = randomGold[0];
+                break;
+            case 1:RandomGold = randomGold[1];
+                break;
+            case 2:RandomGold = randomGold[2];
+                break;
+            case 3:RandomGold = randomGold[3];
+                break;
+            case 4:RandomGold = randomGold[4];
+                break;
+        }
+        //System.out.println(RandomGold);
+        return RandomGold;
+    }
     /**
      * MAIN METHOD
      */
