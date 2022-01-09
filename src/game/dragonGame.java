@@ -50,6 +50,10 @@ public class dragonGame {
      */
     public void run(){
         //run the game
+
+        //save and load game option
+
+        //game loop starts here
         //copy menu game code here for menu
 
         //code for main menu
@@ -57,11 +61,17 @@ public class dragonGame {
             //upgrade options
 
 
-        //apply triggered emotions if any
+        //apply triggered emotions (from citizens) if any
 
-        //dragon attack code here
+        //put dragon attack method here
+        dragonAttack();
+        dragon.levelUp();
+        dragon.recover();
 
         // reset event's temporary effects
+        if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy"))
+                || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger")))
+            //tower.decreaseAccuracy(-0.2f);
 
         // go to next season
         currentSeason++;
@@ -104,7 +114,7 @@ public class dragonGame {
             case "Spring":
                 switch (eventIndex) {
                     case 0:
-                        tower.upAtkPoint();
+                        //tower.upAtkPoint();
                         break;
                     case 1:
                         gold += 100;
@@ -119,7 +129,7 @@ public class dragonGame {
             case "Summer":
                 switch (eventIndex) {
                     case 0:
-                        wall.decreaseHp(50);
+                        //wall.decreaseHp(50);
                         break;
                     case 1:
                         citizens.increaseBerserk();
@@ -136,10 +146,10 @@ public class dragonGame {
             case "Autumn":
                 switch (eventIndex) {
                     case 0:
-                        tower.decreaseAccuracy(0.2f);// temporary
+                        //tower.decreaseAccuracy(0.2f);// temporary
                         break;
                     case 1:
-                        wall.decreaseHp(50);
+                        //wall.decreaseHp(50);
                         break;
                     case 2:
                         gold += 100;
@@ -149,7 +159,7 @@ public class dragonGame {
             case "Winter":
                 switch (eventIndex) {
                     case 0:
-                        wall.decreaseHp(50);
+                        //wall.decreaseHp(50);
                         break;
                     case 1:
                         citizens.increaseEmotional(50);
@@ -157,7 +167,7 @@ public class dragonGame {
                         citizens.increaseLazy(50);
                         break;
                     case 2:
-                        tower.decreaseAccuracy(0.2f);// temporary
+                        //tower.decreaseAccuracy(0.2f);// temporary
                         break;
                     case 3:
                         gold += 100;
@@ -168,6 +178,12 @@ public class dragonGame {
 
         return event;
     }
+
+    /**
+     * Performs dragon attack. The dragon attacks 10 times
+     */
+
+    //put dragon attack method code here
 
     /**
      * MAIN METHOD
