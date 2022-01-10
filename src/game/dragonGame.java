@@ -276,7 +276,40 @@ public class dragonGame {
     /**
      * Shows the wall menu upgrades
      */
+    private void wallMenu(){
+        int option = 0;
+        do{
+            wall.displayStats();
+            System.out.println("\n");
+            System.out.println("1. Upgrade Health (100 Gold -> 75 HealthPoint)");
+            System.out.println("2. Upgrade Block Chance (100 Gold -> 5 Block Chance %)");
+            System.out.println("3. Back to Menu");
+            System.out.print("Please Enter your command: ");
+            option = scan.nextInt();
 
+            if (option != 3 && gold < 50)
+                System.out.println("You do not have enough gold to upgrade.");
+            else{
+                switch(option){
+                    case 1:
+                        gold-=50;
+                        wall.IncreaseWallHp();
+                        System.out.println("Wall Health Increased by 75");
+                        break;
+                    case 2:
+                        gold-=50;
+                        wall.IncreaseWallBlock();
+                        System.out.println("Wall Block Chance Increased by 5%");
+                        break;
+                    case 3: break;
+                    default:
+                        System.out.println("Invalid Option Selected.");
+                        break;
+
+                }
+            }
+        }while(option!=3);
+    }
     /**
      * Shows the tower menu upgrades
      */
