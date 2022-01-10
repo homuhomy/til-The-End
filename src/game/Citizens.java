@@ -1,17 +1,19 @@
 package game;
 
+
 /**
  * Citizens in the game
  *
  */
-public class Citizens {
+public class Citizens{
 
-    public int emotional = 10;
-    public int nervous = 10;
-    public int lazy = 10;
-    public int berserk = 10;
-    public int diligent = 10;
-    public int fearless = 10;
+    //citizens initial emotion level
+    private int emotional = 10;
+    private int nervous = 10;
+    private int lazy = 10;
+    private int berserk = 10;
+    private int diligent = 10;
+    private int fearless = 10;
 
     public void decreaseEmotional() {
         Math.max(emotional - 50, 0);

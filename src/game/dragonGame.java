@@ -9,6 +9,7 @@ public class dragonGame {
     public static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
 
     //different season events
+    //extra: add more varieties to the events
     public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
             " Festival! Berserk, Diligent and Fearless +50 " };
     public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
@@ -19,7 +20,7 @@ public class dragonGame {
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
     private Dragon dragon;
-    //private Tower tower;
+    private Tower tower;
     //private Wall wall;
     public Citizens citizens;
 
@@ -38,8 +39,8 @@ public class dragonGame {
      */
     public dragonGame() {
         dragon = new Dragon();
-        //tower = new Tower();
-        //wall = new Wall();
+        tower = new Tower();
+        wall = new Wall();
         citizens = new Citizens();
 
         scan = new Scanner(System.in);
@@ -65,11 +66,46 @@ public class dragonGame {
             //copy menu game code here for menu
 
             //code for main menu
+            System.out.println("Event: " + event);
+            System.out.println("Tax received from citizens this season: " + tax);
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Gold: " + gold);
+
             //code for command panel
-            //upgrade options
+            // command panel
+            int option = 0;
+            do {
+                System.out.println("1. Tower");
+                System.out.println("2. Wall");
+                System.out.println("3. Citizens");
+                System.out.println("4. I am all ready!");
+                System.out.print("Please enter your command: ");
+                option = scan.nextInt();
 
+                switch (option) {
+                    case 1:
+                        //code to tower menu
+                        // towerMenu();
+                        break;
+                    case 2:
+                        //code to wall menu
+                        //wallMenu();
+                        break;
+                    case 3:
+                        citizensMenu();
+                        break;
+                    // Move to dragon attack
+                    case 4:
+                        break;
+                    // Invalid option
+                    default:
+                        break;
+                }
 
-            // apply triggered emotions (from citizens) if any and to tower/wall stats
+            } while (option != 4);
+
+            // apply triggered emotions (from citizens) if any to tower/wall stats
             if (citizens.getEmotional() >= 100) {
                 //tower.decreaseAtkPoint();
                 citizens.increaseEmotional(-100);
@@ -96,11 +132,11 @@ public class dragonGame {
             }
 
             //put dragon attack method here
-            //dragonAttack();
+            dragonAttack();
 
             //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
-            //dragon.levelUp();
-            //dragon.recover();
+            dragon.levelUp();
+            dragon.recover();
 
             // reset event's temporary effects
             if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy"))
@@ -211,23 +247,57 @@ public class dragonGame {
         return event;
     }
 
+
     /**
-     * Shows the citizens menu upgrades
+     * Perform random tax from citizens
+     */
+    public int ExecuteTax(){
+
+        int [] randomGold = {200, 250, 300, 350, 400};
+        Random random = new Random();
+        int randomGoldIndex = random.nextInt(5);
+        //System.out.println(randomGoldIndex);
+        switch (randomGoldIndex){
+            case 0:RandomGold = randomGold[0];
+                break;
+            case 1:RandomGold = randomGold[1];
+                break;
+            case 2:RandomGold = randomGold[2];
+                break;
+            case 3:RandomGold = randomGold[3];
+                break;
+            case 4:RandomGold = randomGold[4];
+                break;
+        }
+        //System.out.println(RandomGold);
+        return RandomGold;
+    }
+
+    /**
+     * Shows the wall menu upgrades
+     */
+
+    /**
+     * Shows the tower menu upgrades
+     */
+
+    /**
+     * Shows the citizens upgrades menu
      */
     private void citizensMenu() {
         int option = 0;
         do {
-//            citizens.displayStats();
-//            System.out.println("\n");
-//            System.out.println("1. Decrease Emotional (50 Gold -> 50 Emotional Point)");
-//            System.out.println("2. Decrease Nervous (50 Gold -> 50 Nervous Point)");
-//            System.out.println("3. Decrease Lazy (50 Gold -> 50 Lazy Point)");
-//            System.out.println("4. Increase Berserk (50 Gold -> 50 Berserk Point)");
-//            System.out.println("5. Increase Diligent (50 Gold -> 50 Diligent Point)");
-//            System.out.println("6. Increase Fearless (50 Gold -> 50 Fearless Point)");
-//            System.out.println("7. Back to Menu");
-//            System.out.print("Please Enter your command: ");
-//            option = scan.nextInt();
+            citizens.displayStats();
+            System.out.println("\n");
+            System.out.println("1. Decrease Emotional (50 Gold -> 50 Emotional Point)");
+            System.out.println("2. Decrease Nervous (50 Gold -> 50 Nervous Point)");
+            System.out.println("3. Decrease Lazy (50 Gold -> 50 Lazy Point)");
+            System.out.println("4. Increase Berserk (50 Gold -> 50 Berserk Point)");
+            System.out.println("5. Increase Diligent (50 Gold -> 50 Diligent Point)");
+            System.out.println("6. Increase Fearless (50 Gold -> 50 Fearless Point)");
+            System.out.println("7. Back to Menu");
+            System.out.print("Please Enter your command: ");
+            option = scan.nextInt();
 
             if (option != 7 && gold < 50)
                 System.out.println("You do not have enough gold to upgrade.");
@@ -276,44 +346,69 @@ public class dragonGame {
     }
 
     /**
-     * Shows the wall menu upgrades
-     */
-
-    /**
-     * Shows the tower menu upgrades
-     */
-
-
-    /**
      * Performs dragon attack. The dragon attacks 10 times
      */
+    private void dragonAttack() {
+        System.out.println("A dragon performs a sudden attack to your city!");
+        dragon.displayStats();
 
-    //put dragon attack method code here
+        for (int i = 0; i < 10; i++) {
 
-    /**
-     * Perform random tax from citizens
-     */
-    public int ExecuteTax(){
+            // 1. Dragon attack on wall
+            int atkPoint = dragon.getAtkPoint();
+            boolean isCriticalAtk = Math.random() <= dragon.getCritChance();
+            if (isCriticalAtk)
+                atkPoint += (int) (atkPoint * 0.5f);
 
-        int [] randomGold = {200, 250, 300, 350, 400};
-        Random random = new Random();
-        int randomGoldIndex = random.nextInt(5);
-        //System.out.println(randomGoldIndex);
-        switch (randomGoldIndex){
-            case 0:RandomGold = randomGold[0];
-                break;
-            case 1:RandomGold = randomGold[1];
-                break;
-            case 2:RandomGold = randomGold[2];
-                break;
-            case 3:RandomGold = randomGold[3];
-                break;
-            case 4:RandomGold = randomGold[4];
-                break;
+            boolean hasWallBlockedAtk = Math.random() <= //wall.getBlockPercent();
+            if (hasWallBlockedAtk) {
+                System.out.println("Wall successfully blocked dragon's attack!");
+                System.out.println("Current Wall's HealthPoint: " + //wall.getHp());
+            } else {
+                //wall.decreaseHp(atkPoint);
+                System.out.println("Dragon attacked our wall!");
+                System.out.println("Wall's healthpoint minus " + atkPoint);
+                System.out.println("Current Wall's HealthPoint: "  //+ wall.getHp());
+            }
+
+            System.out.println("\n\n");
+
+            // 2. Tower attack on Dragon
+            atkPoint = tower.getAtkPoint();
+            isCriticalAtk = Math.random() <= tower.getCritChance();
+            if (isCriticalAtk)
+                atkPoint += (int) (atkPoint * 0.5f);
+
+            dragon.decreaseHp(atkPoint);
+            if (isCriticalAtk)
+                System.out.println("Tower attacked dragon with critical attack!");
+            else
+                System.out.println("Tower attacked dragon!");
+            System.out.println("Dragon's healthpoint minus " + atkPoint);
+            System.out.println("Current Dragon's HealthPoint: " + dragon.getHp());
+
+            // Check if won/lose
+            //dragon hp less than 0
+            if (dragon.getHp() <= 0) {
+                System.out.println("You killed the dragon! You protected the city!");
+                System.exit(0);
+            } //when wall hp is less than 0
+            else if (wall.getHp() <= 0) {
+                System.out.println("You failed to protect your city!");
+                System.exit(0);
+            }
+
+            System.out.println("\n");
+
+            // sleep for 1 second
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        //System.out.println(RandomGold);
-        return RandomGold;
     }
+
     /**
      * MAIN METHOD
      */
