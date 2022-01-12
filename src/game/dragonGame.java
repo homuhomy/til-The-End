@@ -86,7 +86,7 @@ public class dragonGame {
                 switch (option) {
                     case 1:
                         //code to tower menu
-                        // towerMenu();
+                        TowerMenu();
                         break;
                     case 2:
                         //code to wall menu
@@ -279,7 +279,7 @@ public class dragonGame {
     private void wallMenu(){
         int option = 0;
         do{
-            wall.displayStats();
+            Wall.displayStats();
             System.out.println("\n");
             System.out.println("1. Upgrade Health (100 Gold -> 75 HealthPoint)");
             System.out.println("2. Upgrade Block Chance (100 Gold -> 5 Block Chance %)");
@@ -293,12 +293,12 @@ public class dragonGame {
                 switch(option){
                     case 1:
                         gold-=50;
-                        wall.IncreaseWallHp();
+                        Wall.IncreaseWallHp();
                         System.out.println("Wall Health Increased by 75");
                         break;
                     case 2:
                         gold-=50;
-                        wall.IncreaseWallBlock();
+                        Wall.IncreaseWallBlock();
                         System.out.println("Wall Block Chance Increased by 5%");
                         break;
                     case 3: break;
@@ -313,6 +313,53 @@ public class dragonGame {
     /**
      * Shows the tower menu upgrades
      */
+
+    private void TowerMenu() {
+
+        int command = 0;
+        do {
+            //call tower stats from tower class
+            Tower.displayStats();
+            System.out.println("\n");
+            System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
+            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
+            System.out.println("3. Upgrade Accuracy (100 Gold -> 4% Accuracy)");
+            System.out.println("4. Back to menu");
+            System.out.println("Please enter your command: ");
+            command = scan.nextInt();
+
+            if (command != 4 && gold < 100)
+                System.out.println("You do not have enough gold to upgrade.");
+            else {
+                switch (command) {
+                    case 1:
+                        gold -= 100;
+                        Tower.upAtkPoint();
+                        System.out.println("Tower AttackPoint upgraded +1");
+                        break;
+                    case 2:
+                        gold -= 100;
+                        Tower.upCritChance();
+                        System.out.println(" Tower Critical Chance Upgraded +5");
+                        break;
+                    case 3:
+                        gold -= 100;
+                        Tower.upAccuracy();
+                        System.out.println(" Tower Accuracy Upgraded 4%");
+                        break;
+                    case 4:
+                        break;
+
+                    default:
+                        System.out.println("Invalid Option Selected.");
+                        break;
+                }
+            }
+        } while (command != 4);
+
+    }
+
+
 
     /**
      * Shows the citizens upgrades menu
