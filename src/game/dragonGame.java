@@ -54,6 +54,7 @@ public class dragonGame {
         //new game option or continue game (load)
 
         //new game
+        System.out.println("\n");
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
         System.out.println("\n\n");
@@ -72,6 +73,7 @@ public class dragonGame {
 
 
             //code for main menu
+            System.out.println("_________A RANDOM EVENT HAS OCCURRED!!_____________");
             System.out.println("Event: " + event);
             System.out.println("Tax received from citizens this season: " + tax);
             System.out.println("Year: " + year);
