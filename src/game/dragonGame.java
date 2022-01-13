@@ -15,7 +15,7 @@ public class dragonGame {
     public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
             "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50", "Yummy ice cream! Wall's Health Point +75" };
     public static final String[] AUTUMN_EVENTS = { "Oh no it's rainy! Tower Accuracy -20%", "Oh no it's the flood! Wall's HealthPoint -50",
-            "Harvest! +100 Gold", "You have an umbrella, Wall's Health Point +75 " };
+            "Harvest! +100 Gold", "You got an extra help from the government! Attack Point +1 " };
     public static final String[] WINTER_EVENTS = { "Oh no it's the blizzard! Wall's HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
@@ -241,7 +241,7 @@ public class dragonGame {
                         gold += 100;
                         break;
                     case 3:
-                        wall.increaseHp();
+                        tower.upAtkPoint();
                 }
                 break;
             case "Winter":
