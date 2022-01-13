@@ -515,6 +515,7 @@ public class dragonGame {
                 System.out.println("You killed the dragon! You protected the city!");
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
+                gameOver();
                 System.out.println("You failed to protect your city!");
                 System.exit(0);
             }
@@ -530,6 +531,15 @@ public class dragonGame {
         }
     }
 
+    public void gameOver(){
+        System.out.println("\n" +
+                "╭━━━┳━━━┳━╮╭━┳━━━╮╭━━━┳╮╱╱╭┳━━━┳━━━╮\n" +
+                "┃╭━╮┃╭━╮┃┃╰╯┃┃╭━━╯┃╭━╮┃╰╮╭╯┃╭━━┫╭━╮┃\n" +
+                "┃┃╱╰┫┃╱┃┃╭╮╭╮┃╰━━╮┃┃╱┃┣╮┃┃╭┫╰━━┫╰━╯┃\n" +
+                "┃┃╭━┫╰━╯┃┃┃┃┃┃╭━━╯┃┃╱┃┃┃╰╯┃┃╭━━┫╭╮╭╯\n" +
+                "┃╰┻━┃╭━╮┃┃┃┃┃┃╰━━╮┃╰━╯┃╰╮╭╯┃╰━━┫┃┃╰╮\n" +
+                "╰━━━┻╯╱╰┻╯╰╯╰┻━━━╯╰━━━╯╱╰╯╱╰━━━┻╯╰━╯");
+    }
     public void dragonFlyingArt(){
         System.out.println("\t\t         \\`----.__                 ____               \n" +
                 "\t\t\t\t  |       `--._         <=#  , *--,           \n" +
