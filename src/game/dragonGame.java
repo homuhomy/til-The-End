@@ -631,6 +631,7 @@ public class dragonGame {
 
             // Check if won/lose
             if (dragon.getHp() <= 0) {
+                youWon();
                 System.out.println("You killed the dragon! You protected the city!");
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
@@ -639,6 +640,8 @@ public class dragonGame {
                 System.exit(0);
             }
 
+            System.out.println("\n");
+            System.out.println("_______________________________________________________________________________");
             System.out.println("\n");
 
             // sleep for 1 second
