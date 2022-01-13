@@ -21,6 +21,15 @@ public class Dragon extends sameBehaviour {
     }
 
     /**
+     * decrease dragon's hp
+     */
+
+    public void decreaseHp(int atkPoint) {
+        currentHp -= atkPoint;
+
+    }
+
+    /**
      * Recovers the dragon
      */
     public void recover() {
@@ -50,10 +59,6 @@ public class Dragon extends sameBehaviour {
     }
 
 
-    public void decreaseHp(int atkPoint) {
-        currentHp -= atkPoint;
-
-    }
 
     //getters
     public int getHp() {

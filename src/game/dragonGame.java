@@ -51,6 +51,7 @@ public class dragonGame {
      * run the game
      */
     public void run(){
+        dragonAttack();
 
         //save and load game option
 
@@ -443,12 +444,13 @@ public class dragonGame {
             } else {
                 wall.decreaseHp(atkPoint);
                 System.out.println("Dragon attacked our wall!");
-                System.out.println("Wall's health point minus " + atkPoint);
+                System.out.println("Wall's healthpoint minus " + atkPoint);
                 System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             }
 
             System.out.println("\n\n");
 
+            //fix dragonHp
             // 2. Tower attack on Dragon
             atkPoint = tower.getAtkPoint();
             isCriticalAtk = Math.random() <= tower.getCritChance();
@@ -464,12 +466,10 @@ public class dragonGame {
             System.out.println("Current Dragon's HealthPoint: " + dragon.getHp());
 
             // Check if won/lose
-            //dragon hp less than 0
             if (dragon.getHp() <= 0) {
                 System.out.println("You killed the dragon! You protected the city!");
                 System.exit(0);
-            } //when wall hp is less than 0
-            else if (wall.getHp() <= 0) {
+            } else if (wall.getHp() <= 0) {
                 System.out.println("You failed to protect your city!");
                 System.exit(0);
             }

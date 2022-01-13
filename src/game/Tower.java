@@ -36,7 +36,7 @@ public class Tower extends sameBehaviour {
         accuracy = Math.min(0.8f, accuracy);
     }
     public void decreaseAtkPoint(){
-        atkPoint--;
+        --atkPoint;
     }
     public void decreaseCritChance(){
 
