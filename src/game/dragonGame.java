@@ -11,11 +11,11 @@ public class dragonGame {
     //different season events
     //extra: add more varieties to the events
     public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
-            " Festival! Berserk, Diligent and Fearless +50 " };
+            " Festival! Berserk, Diligent and Fearless +50 ", "There's a free gift from a shop! Wall's Health Point +75" };
     public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
-            "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50" };
+            "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50", "Yummy ice cream! Wall's Health Point +75" };
     public static final String[] AUTUMN_EVENTS = { "Oh no it's rainy! Tower Accuracy -20%", "Oh no it's the flood! Wall's HealthPoint -50",
-            "Harvest! +100 Gold" };
+            "Harvest! +100 Gold", "You got an extra help from the government! Attack Point +1 " };
     public static final String[] WINTER_EVENTS = { "Oh no it's the blizzard! Wall's HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
@@ -29,7 +29,7 @@ public class dragonGame {
     public  int tax = 200;
     public int RandomGold = 0;
     public int gold = 200;
-    public String event;
+    public String event1, event2;
 
     public Scanner scan;
     public Random random;
@@ -67,8 +67,9 @@ public class dragonGame {
 
         //game loop starts here
         while(true){
-            //execute random event
-            event = executeRandomEvent();
+            //execute 2 random events
+            event1 = executeRandomEvent1();
+            event2 = executeRandomEvent2();
             //execute tax from citizens
             ExecuteTax();
             tax = RandomGold;
@@ -77,8 +78,8 @@ public class dragonGame {
 
             //code for main menu
             System.out.println("\n");
-            System.out.println("_________A RANDOM EVENT HAS OCCURRED!!_____________");
-            System.out.println("Event: " + event);
+            System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
+            System.out.println("EVENT 1: " + event1 + " and EVENT 2: " + event2);
             System.out.println("Tax received from citizens this season: " + tax);
             System.out.println("Year: " + year);
             System.out.println("Season: " + SEASONS[currentSeason]);
@@ -152,7 +153,8 @@ public class dragonGame {
             dragon.recover();
 
             // reset event's temporary effects
-            if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy")) || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger"))){
+            if ((SEASONS[currentSeason].equals("Autumn") && event1.contains("Rainy")) || event2.contains("Rainy") || (SEASONS[currentSeason].equals("Winter")
+                    && event1.contains("Hunger") || event2.contains("Hunger"))){
                 tower.decreaseAccuracy(0.02f);
             }
 
@@ -171,23 +173,24 @@ public class dragonGame {
      *
      * @return the executed event
      */
-    private String executeRandomEvent() {
+    private String executeRandomEvent1() {
 
         // set random event
-        String event = "";
-        int eventIndex = random.nextInt(3);
+        //first event
+        String event1 = "";
+        int eventIndex = random.nextInt(4);
         switch (SEASONS[currentSeason]) {
             case "Spring":
-                event = SPRING_EVENTS[eventIndex];
+                event1 = SPRING_EVENTS[eventIndex];
                 break;
             case "Summer":
-                event = SUMMER_EVENTS[eventIndex];
+                event1 = SUMMER_EVENTS[eventIndex];
                 break;
             case "Autumn":
-                event = AUTUMN_EVENTS[eventIndex];
+                event1 = AUTUMN_EVENTS[eventIndex];
                 break;
             case "Winter":
-                event = WINTER_EVENTS[eventIndex];
+                event1 = WINTER_EVENTS[eventIndex];
                 break;
         }
 
@@ -206,6 +209,8 @@ public class dragonGame {
                         citizens.increaseDiligent();
                         citizens.increaseFearless();
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Summer":
@@ -223,6 +228,8 @@ public class dragonGame {
                         citizens.increaseNervous(50);
                         citizens.increaseLazy(50);
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Autumn":
@@ -236,6 +243,8 @@ public class dragonGame {
                     case 2:
                         gold += 100;
                         break;
+                    case 3:
+                        tower.upAtkPoint();
                 }
                 break;
             case "Winter":
@@ -258,7 +267,103 @@ public class dragonGame {
                 break;
         }
 
-        return event;
+        return event1;
+    }
+    private String executeRandomEvent2() {
+
+        // set random event
+        //first event
+        String event2 = "";
+        int eventIndex = random.nextInt(4);
+        switch (SEASONS[currentSeason]) {
+            case "Spring":
+                event2 = SPRING_EVENTS[eventIndex];
+                break;
+            case "Summer":
+                event2 = SUMMER_EVENTS[eventIndex];
+                break;
+            case "Autumn":
+                event2 = AUTUMN_EVENTS[eventIndex];
+                break;
+            case "Winter":
+                event2 = WINTER_EVENTS[eventIndex];
+                break;
+        }
+
+        // apply event
+        switch (SEASONS[currentSeason]) {
+            case "Spring":
+                switch (eventIndex) {
+                    case 0:
+                        tower.upAtkPoint();
+                        break;
+                    case 1:
+                        gold += 100;
+                        break;
+                    case 2:
+                        citizens.increaseBerserk();
+                        citizens.increaseDiligent();
+                        citizens.increaseFearless();
+                        break;
+                    case 3:
+                        wall.increaseHp();
+                }
+                break;
+            case "Summer":
+                switch (eventIndex) {
+                    case 0:
+                        wall.decreaseHp(50);
+                        break;
+                    case 1:
+                        citizens.increaseBerserk();
+                        citizens.increaseDiligent();
+                        citizens.increaseFearless();
+                        break;
+                    case 2:
+                        citizens.increaseEmotional(50);
+                        citizens.increaseNervous(50);
+                        citizens.increaseLazy(50);
+                        break;
+                    case 3:
+                        wall.increaseHp();
+                }
+                break;
+            case "Autumn":
+                switch (eventIndex) {
+                    case 0:
+                        tower.decreaseAccuracy(0.2f);// temporary
+                        break;
+                    case 1:
+                        wall.decreaseHp(50);
+                        break;
+                    case 2:
+                        gold += 100;
+                        break;
+                    case 3:
+                        tower.upAtkPoint();
+                }
+                break;
+            case "Winter":
+                switch (eventIndex) {
+                    case 0:
+                        wall.decreaseHp(50);
+                        break;
+                    case 1:
+                        citizens.increaseEmotional(50);
+                        citizens.increaseNervous(50);
+                        citizens.increaseLazy(50);
+                        break;
+                    case 2:
+                        tower.decreaseAccuracy(0.2f);// temporary
+                        break;
+                    case 3:
+                        gold += 100;
+                        break;
+                }
+                break;
+        }
+
+        return event2;
     }
 
 
@@ -517,6 +622,7 @@ public class dragonGame {
                 System.out.println("You killed the dragon! You protected the city!");
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
+                gameOver();
                 System.out.println("You failed to protect your city!");
                 System.exit(0);
             }
@@ -532,6 +638,25 @@ public class dragonGame {
         }
     }
 
+    public void youWon(){
+        System.out.println("\n" +
+                "╭╮╱╱╭┳━━━┳╮╱╭╮╭╮╭╮╭┳━━━┳━╮╱╭┳╮\n" +
+                "┃╰╮╭╯┃╭━╮┃┃╱┃┃┃┃┃┃┃┃╭━╮┃┃╰╮┃┃┃\n" +
+                "╰╮╰╯╭┫┃╱┃┃┃╱┃┃┃┃┃┃┃┃┃╱┃┃╭╮╰╯┃┃\n" +
+                "╱╰╮╭╯┃┃╱┃┃┃╱┃┃┃╰╯╰╯┃┃╱┃┃┃╰╮┃┣╯\n" +
+                "╱╱┃┃╱┃╰━╯┃╰━╯┃╰╮╭╮╭┫╰━╯┃┃╱┃┃┣╮\n" +
+                "╱╱╰╯╱╰━━━┻━━━╯╱╰╯╰╯╰━━━┻╯╱╰━┻╯");
+    }
+
+    public void gameOver(){
+        System.out.println("\n" +
+                "╭━━━┳━━━┳━╮╭━┳━━━╮╭━━━┳╮╱╱╭┳━━━┳━━━╮\n" +
+                "┃╭━╮┃╭━╮┃┃╰╯┃┃╭━━╯┃╭━╮┃╰╮╭╯┃╭━━┫╭━╮┃\n" +
+                "┃┃╱╰┫┃╱┃┃╭╮╭╮┃╰━━╮┃┃╱┃┣╮┃┃╭┫╰━━┫╰━╯┃\n" +
+                "┃┃╭━┫╰━╯┃┃┃┃┃┃╭━━╯┃┃╱┃┃┃╰╯┃┃╭━━┫╭╮╭╯\n" +
+                "┃╰┻━┃╭━╮┃┃┃┃┃┃╰━━╮┃╰━╯┃╰╮╭╯┃╰━━┫┃┃╰╮\n" +
+                "╰━━━┻╯╱╰┻╯╰╯╰┻━━━╯╰━━━╯╱╰╯╱╰━━━┻╯╰━╯");
+    }
     public void dragonFlyingArt(){
         System.out.println("\t\t         \\`----.__                 ____               \n" +
                 "\t\t\t\t  |       `--._         <=#  , *--,           \n" +
