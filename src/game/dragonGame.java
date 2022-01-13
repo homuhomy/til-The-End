@@ -59,6 +59,7 @@ public class dragonGame {
         System.out.println("\n\n");
 
         dragonAttack();
+        dragon.recover();
 
         //game loop starts here
         while(true){

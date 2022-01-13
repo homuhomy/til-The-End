@@ -33,7 +33,7 @@ public class Dragon extends sameBehaviour {
      * Recovers the dragon
      */
     public void recover() {
-        currentHp = hp;
+        currentHp = hp; //go back to current hp
         currentAtkPoint = atkPoint;
         critChance = 0.2f;
         accuracy = 0.8f;
