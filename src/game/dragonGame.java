@@ -51,9 +51,14 @@ public class dragonGame {
      * run the game
      */
     public void run(){
-        dragonAttack();
+        //new game option or continue game (load)
 
-        //save and load game option
+        //new game
+        System.out.println("Citizen A: ...wait what is that?");
+        System.out.println("Citizen B: ...is that a dragon?!");
+        System.out.println("\n\n");
+
+        dragonAttack();
 
         //game loop starts here
         while(true){
@@ -428,6 +433,7 @@ public class dragonGame {
     private void dragonAttack() {
         System.out.println("A dragon performs a sudden attack to your city!");
         dragon.displayStats();
+        System.out.println("\n\n");
 
         for (int i = 0; i < 10; i++) {
 
@@ -444,7 +450,7 @@ public class dragonGame {
             } else {
                 wall.decreaseHp(atkPoint);
                 System.out.println("Dragon attacked our wall!");
-                System.out.println("Wall's healthpoint minus " + atkPoint);
+                System.out.println("Wall's health point minus " + atkPoint);
                 System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             }
 

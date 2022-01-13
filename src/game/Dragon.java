@@ -62,7 +62,7 @@ public class Dragon extends sameBehaviour {
 
     //getters
     public int getHp() {
-        return hp;
+        return currentHp;
     }
 
     public int getAtkPoint() {
