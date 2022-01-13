@@ -36,8 +36,9 @@ public class Tower extends sameBehaviour {
     public void displayStats() {
         //System.out.println("\n");
         System.out.println("Tower's AttackPoint: " + atkPoint);
-        System.out.println("Towers Critical Chance: " + (critChance * 100) + "% (Max is 50%)");
-        System.out.println("Tower's Accuracy: " + (accuracy * 100) + "% (Max is 100%) ");
+        System.out.print("Towers Critical Chance: " + (critChance * 100) + "% (Max is 50%)");
+        System.out.print("\nTower's Accuracy: " + (accuracy * 100) + "% (Max is 100%) \n");
+        //System.out.println("\n");
 
     }
 
