@@ -58,6 +58,7 @@ public class dragonGame {
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
         System.out.println("\n");
+        System.out.println("test 2");
 
         dragonAttack();
         dragonFlyingArt();
