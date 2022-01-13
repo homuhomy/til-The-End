@@ -59,6 +59,7 @@ public class dragonGame {
         System.out.println("\n");
 
         dragonAttack();
+        dragonFlyingArt();
         dragon.recover();
 
         //game loop starts here
@@ -136,6 +137,7 @@ public class dragonGame {
 
             //put dragon attack method here
             dragonAttack();
+            dragonFlyingArt();
 
             //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
             dragon.levelUp();
@@ -436,9 +438,9 @@ public class dragonGame {
         dragon.displayStats();
         System.out.println("\n");
 
-        // sleep for 5 second
+        // sleep for 3 second
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -496,6 +498,25 @@ public class dragonGame {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void dragonFlyingArt(){
+        System.out.println("\t\t         \\`----.__                 ____               \n" +
+                "\t\t\t\t  |       `--._         <=#  , *--,           \n" +
+                " \t\t\t\t  /_             `-.    ,/  / `````            \n" +
+                " \t\t\t\t    \\__             (_.'  ,'                   THE DRAGON FLEW AWAY\n" +
+                "\t\t\t\t       \\__ ......'       \\___----^__           \n" +
+                "\t\t\t\t      ./               ,'           `.         \n" +
+                "\t\t\t  |\\     _.'   ___/ )\\...._\"   ___           \\        \n" +
+                "\t\t\t  | \\__.'  __.'            `\"\"'   `\"\"`.'\"\"\"`--\\       \n" +
+                "\t\t\t   \\____.-'                                           \n");
+
+        // sleep for 1 second
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
