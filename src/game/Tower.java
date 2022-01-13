@@ -42,8 +42,8 @@ public class Tower extends sameBehaviour {
 
     }
 
-    public void decreaseAccuracy(){
-        accuracy -= 0.2f;
+    public void decreaseAccuracy(double decreasePnt){
+        accuracy -= decreasePnt;
         accuracy = Math.min(0.8f, accuracy);
     }
 

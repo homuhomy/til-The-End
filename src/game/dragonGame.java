@@ -108,7 +108,7 @@ public class dragonGame {
                 citizens.increaseEmotional(-100);
             }
             if (citizens.getNervous() >= 100) {
-                tower.decreaseAccuracy(); //decrease 5%
+                tower.decreaseAccuracy(0.05f); //decrease 5%
                 citizens.increaseNervous(-100);
             }
             if (citizens.getLazy() >= 100) {
@@ -137,7 +137,7 @@ public class dragonGame {
 
             // reset event's temporary effects
             if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy")) || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger"))){
-                tower.decreaseAccuracy();
+                tower.decreaseAccuracy(0.02f);
             }
 
 
@@ -212,7 +212,7 @@ public class dragonGame {
             case "Autumn":
                 switch (eventIndex) {
                     case 0:
-                        tower.decreaseAccuracy();// temporary
+                        tower.decreaseAccuracy(0.2f);// temporary
                         break;
                     case 1:
                         wall.decreaseHp(50);
@@ -233,7 +233,7 @@ public class dragonGame {
                         citizens.increaseLazy(50);
                         break;
                     case 2:
-                        tower.decreaseAccuracy();// temporary
+                        tower.decreaseAccuracy(0.2f);// temporary
                         break;
                     case 3:
                         gold += 100;
