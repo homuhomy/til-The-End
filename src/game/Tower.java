@@ -29,11 +29,11 @@ public class Tower extends sameBehaviour {
     }
     public void upCritChance() {
         critChance += 0.05f;
-        critChance = Math.min(0.05f, critChance);
+        critChance = Math.min(0.5f, critChance);
     }
     public void upAccuracy() {
         accuracy += 0.8f;
-        accuracy = Math.min(0.8f, accuracy);
+        accuracy = Math.min(1.0f, accuracy);
     }
     public void decreaseAtkPoint(){
         --atkPoint;
@@ -42,18 +42,19 @@ public class Tower extends sameBehaviour {
 
     }
 
-    public void decreaseAccuracy(double decreasePnt){
+    public void decreaseAccuracy(float decreasePnt){
         accuracy -= decreasePnt;
         accuracy = Math.min(0.8f, accuracy);
     }
 
 
     public void displayStats() {
-        System.out.println("Year: " + getYear());
-        System.out.println("Season: " + getSEASONS());
-        System.out.println("Gold: " + getGold());
+        System.out.println("\n");
+        // System.out.println("Year: " + year);
+        // System.out.println("Season: " + getSEASONS());
+        // System.out.println("Gold: " + gold);
         System.out.println("Tower's AttackPoint: " + atkPoint);
-        System.out.println("Towers Critical Chance: " + critChance);
+        System.out.println("Towers Critical Chance: " + (critChance * 100) + "%");
         System.out.println("Tower's Accuracy: " + (accuracy * 100) + "%");
 
     }

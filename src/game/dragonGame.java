@@ -81,6 +81,7 @@ public class dragonGame {
             // command panel
             int option = 0;
             do {
+                System.out.println("\n");
                 System.out.println("1. Tower");
                 System.out.println("2. Wall");
                 System.out.println("3. Citizens");
@@ -326,10 +327,10 @@ public class dragonGame {
             tower.displayStats();
             System.out.println("\n");
             System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
-            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
+            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5% Critical Chance)");
             System.out.println("3. Upgrade Accuracy (100 Gold -> 4% Accuracy)");
             System.out.println("4. Back to menu");
-            System.out.println("Please enter your command: ");
+            System.out.print("Please enter your command: ");
             command = scan.nextInt();
 
             if (command != 4 && gold < 100)

@@ -54,7 +54,7 @@ public class Dragon extends sameBehaviour {
         System.out.println("Dragon's Level: " + level);
         System.out.println("Dragon's HealthPoint: " + currentHp);
         System.out.println("Dragon's AttackPoint: " + atkPoint);
-        System.out.println("Dragon's Critical Chance: " + critChance);
+        System.out.println("Dragon's Critical Chance: " + (critChance *100) + "%");
         System.out.println("Dragon's Accuracy: " + (accuracy * 100) + "%");
     }
 
