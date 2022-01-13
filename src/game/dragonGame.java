@@ -84,6 +84,9 @@ public class dragonGame {
             // command panel
             int option = 0;
             do {
+                System.out.println("\n");
+                System.out.println("____________________________MAIN MENU____________________________");
+                System.out.println("Select towers, walls and citizens to upgrade their stats OR Start Game.");
                 System.out.println("1. Tower");
                 System.out.println("2. Wall");
                 System.out.println("3. Citizens");
@@ -287,8 +290,16 @@ public class dragonGame {
     private void wallMenu(){
         int option = 0;
         do{
-            wall.displayStats();
+            //wall.displayStats();
             System.out.println("\n");
+            System.out.println("____________CURRENT STATS____________");
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Current Gold: " + gold);
+            wall.displayStats();
+            System.out.println("_______________________________________");
+            //System.out.println("\n");
+            System.out.println("Choose which to upgrade.");
             System.out.println("1. Upgrade Health (100 Gold -> 75 HealthPoint)");
             System.out.println("2. Upgrade Block Chance (100 Gold -> 5 Block Chance %)");
             System.out.println("3. Back to Menu");
@@ -327,8 +338,15 @@ public class dragonGame {
         int command = 0;
         do {
             //call tower stats from tower class
-            tower.displayStats();
             System.out.println("\n");
+            System.out.println("____________CURRENT STATS____________");
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Current Gold: " + gold);
+            tower.displayStats();
+            System.out.println("_______________________________________");
+            //System.out.println("\n");
+            System.out.println("Choose which to upgrade.");
             System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
             System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
             System.out.println("3. Upgrade Accuracy (100 Gold -> 4% Accuracy)");
@@ -374,8 +392,15 @@ public class dragonGame {
     private void citizensMenu() {
         int option = 0;
         do {
-            citizens.displayStats();
             System.out.println("\n");
+            System.out.println("____________________________CURRENT STATS______________________________");
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Current Gold: " + gold);
+            citizens.displayStats();
+            System.out.println("________________________________________________________________________");
+            //System.out.println("\n");
+            System.out.println("Choose which to increase/decrease.");
             System.out.println("1. Decrease Emotional (50 Gold -> 50 Emotional Point)");
             System.out.println("2. Decrease Nervous (50 Gold -> 50 Nervous Point)");
             System.out.println("3. Decrease Lazy (50 Gold -> 50 Lazy Point)");
