@@ -414,8 +414,12 @@ public class dragonGame {
             System.out.print("Please Enter your command: ");
             option = scan.nextInt();
 
-            if (option != 3 && gold < 100)
+            if (option != 3 && gold < 100) {
+                System.out.println("\n");
+                System.out.println("==============================================");
                 System.out.println("You do not have enough gold to upgrade.");
+                System.out.println("==============================================");
+            }
             else{
                 switch(option){
                     case 1:
@@ -462,8 +466,12 @@ public class dragonGame {
             System.out.print("Please enter your command: ");
             command = scan.nextInt();
 
-            if (command != 4 && gold < 100)
+            if (command != 4 && gold < 100) {
+                System.out.println("\n");
+                System.out.println("==============================================");
                 System.out.println("You do not have enough gold to upgrade.");
+                System.out.println("==============================================");
+            }
             else {
                 switch (command) {
                     case 1:
@@ -519,8 +527,12 @@ public class dragonGame {
             System.out.print("Please Enter your command: ");
             option = scan.nextInt();
 
-            if (option != 7 && gold < 50)
+            if (option != 7 && gold < 50) {
+                System.out.println("\n");
+                System.out.println("==============================================");
                 System.out.println("You do not have enough gold to upgrade.");
+                System.out.println("==============================================");
+            }
             else {
                 switch (option) {
                     case 1:
