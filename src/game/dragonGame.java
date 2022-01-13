@@ -11,11 +11,11 @@ public class dragonGame {
     //different season events
     //extra: add more varieties to the events
     public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
-            " Festival! Berserk, Diligent and Fearless +50 " };
+            " Festival! Berserk, Diligent and Fearless +50 ", "There's a free gift from a shop! Wall's Health Point +75" };
     public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
-            "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50" };
+            "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50", "Yummy ice cream! Wall's Health Point +75" };
     public static final String[] AUTUMN_EVENTS = { "Oh no it's rainy! Tower Accuracy -20%", "Oh no it's the flood! Wall's HealthPoint -50",
-            "Harvest! +100 Gold" };
+            "Harvest! +100 Gold", "You have an umbrella, Wall's Health Point +75 " };
     public static final String[] WINTER_EVENTS = { "Oh no it's the blizzard! Wall's HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
@@ -175,7 +175,7 @@ public class dragonGame {
 
         // set random event
         String event = "";
-        int eventIndex = random.nextInt(3);
+        int eventIndex = random.nextInt(4);
         switch (SEASONS[currentSeason]) {
             case "Spring":
                 event = SPRING_EVENTS[eventIndex];
@@ -206,6 +206,8 @@ public class dragonGame {
                         citizens.increaseDiligent();
                         citizens.increaseFearless();
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Summer":
@@ -223,6 +225,8 @@ public class dragonGame {
                         citizens.increaseNervous(50);
                         citizens.increaseLazy(50);
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Autumn":
@@ -236,6 +240,8 @@ public class dragonGame {
                     case 2:
                         gold += 100;
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Winter":
@@ -531,6 +537,16 @@ public class dragonGame {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void youWon(){
+        System.out.println("\n" +
+                "╭╮╱╱╭┳━━━┳╮╱╭╮╭╮╭╮╭┳━━━┳━╮╱╭┳╮\n" +
+                "┃╰╮╭╯┃╭━╮┃┃╱┃┃┃┃┃┃┃┃╭━╮┃┃╰╮┃┃┃\n" +
+                "╰╮╰╯╭┫┃╱┃┃┃╱┃┃┃┃┃┃┃┃┃╱┃┃╭╮╰╯┃┃\n" +
+                "╱╰╮╭╯┃┃╱┃┃┃╱┃┃┃╰╯╰╯┃┃╱┃┃┃╰╮┃┣╯\n" +
+                "╱╱┃┃╱┃╰━╯┃╰━╯┃╰╮╭╮╭┫╰━╯┃┃╱┃┃┣╮\n" +
+                "╱╱╰╯╱╰━━━┻━━━╯╱╰╯╰╯╰━━━┻╯╱╰━┻╯");
     }
 
     public void gameOver(){
