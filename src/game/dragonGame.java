@@ -21,7 +21,7 @@ public class dragonGame {
 
     private Dragon dragon;
     private Tower tower;
-    //private Wall wall;
+    private Wall wall;
     public Citizens citizens;
 
     public int year = 1;
@@ -63,7 +63,6 @@ public class dragonGame {
             tax = RandomGold;
             gold += tax;
 
-            //copy menu game code here for menu
 
             //code for main menu
             System.out.println("Event: " + event);
@@ -72,7 +71,6 @@ public class dragonGame {
             System.out.println("Season: " + SEASONS[currentSeason]);
             System.out.println("Gold: " + gold);
 
-            //code for command panel
             // command panel
             int option = 0;
             do {
@@ -85,12 +83,10 @@ public class dragonGame {
 
                 switch (option) {
                     case 1:
-                        //code to tower menu
                         TowerMenu();
                         break;
                     case 2:
-                        //code to wall menu
-                        //wallMenu();
+                        wallMenu();
                         break;
                     case 3:
                         citizensMenu();
@@ -107,27 +103,27 @@ public class dragonGame {
 
             // apply triggered emotions (from citizens) if any to tower/wall stats
             if (citizens.getEmotional() >= 100) {
-                //tower.decreaseAtkPoint();
+                tower.decreaseAtkPoint();
                 citizens.increaseEmotional(-100);
             }
             if (citizens.getNervous() >= 100) {
-                //tower.decreaseAccuracy(0.05f);
+                tower.decreaseAccuracy(); //decrease 5%
                 citizens.increaseNervous(-100);
             }
             if (citizens.getLazy() >= 100) {
-                //wall.decreaseHp(100);
+                wall.decreaseHp(100);
                 citizens.increaseLazy(-100);
             }
             if (citizens.getBerserk() >= 100) {
-                //tower.upAtkPoint();
+                tower.upAtkPoint();
                 citizens.increaseBerserk(-100);
             }
             if (citizens.getDiligent() >= 100) {
-                //wall.upHp();
+                wall.IncreaseWallHp();
                 citizens.increaseDiligent(-100);
             }
             if (citizens.getFearless() >= 100) {
-                //tower.upCritChance();
+                tower.upCritChance();
                 citizens.increaseFearless(-100);
             }
 
@@ -139,9 +135,10 @@ public class dragonGame {
             dragon.recover();
 
             // reset event's temporary effects
-            if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy"))
-                    || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger")))
-                //tower.decreaseAccuracy(-0.2f);
+            if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy")) || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger"))){
+                tower.decreaseAccuracy();
+            }
+
 
             // go to next season
             currentSeason++;
@@ -182,7 +179,7 @@ public class dragonGame {
             case "Spring":
                 switch (eventIndex) {
                     case 0:
-                        //tower.upAtkPoint();
+                        tower.upAtkPoint();
                         break;
                     case 1:
                         gold += 100;
@@ -197,7 +194,7 @@ public class dragonGame {
             case "Summer":
                 switch (eventIndex) {
                     case 0:
-                        //wall.decreaseHp(50);
+                        wall.decreaseHp(50);
                         break;
                     case 1:
                         citizens.increaseBerserk();
@@ -214,10 +211,10 @@ public class dragonGame {
             case "Autumn":
                 switch (eventIndex) {
                     case 0:
-                        //tower.decreaseAccuracy(0.2f);// temporary
+                        tower.decreaseAccuracy();// temporary
                         break;
                     case 1:
-                        //wall.decreaseHp(50);
+                        wall.decreaseHp(50);
                         break;
                     case 2:
                         gold += 100;
@@ -227,7 +224,7 @@ public class dragonGame {
             case "Winter":
                 switch (eventIndex) {
                     case 0:
-                        //wall.decreaseHp(50);
+                        wall.decreaseHp(50);
                         break;
                     case 1:
                         citizens.increaseEmotional(50);
@@ -235,7 +232,7 @@ public class dragonGame {
                         citizens.increaseLazy(50);
                         break;
                     case 2:
-                        //tower.decreaseAccuracy(0.2f);// temporary
+                        tower.decreaseAccuracy();// temporary
                         break;
                     case 3:
                         gold += 100;
@@ -279,7 +276,7 @@ public class dragonGame {
     private void wallMenu(){
         int option = 0;
         do{
-            Wall.displayStats();
+            wall.displayStats();
             System.out.println("\n");
             System.out.println("1. Upgrade Health (100 Gold -> 75 HealthPoint)");
             System.out.println("2. Upgrade Block Chance (100 Gold -> 5 Block Chance %)");
@@ -293,12 +290,12 @@ public class dragonGame {
                 switch(option){
                     case 1:
                         gold-=50;
-                        Wall.IncreaseWallHp();
+                        wall.IncreaseWallHp();
                         System.out.println("Wall Health Increased by 75");
                         break;
                     case 2:
                         gold-=50;
-                        Wall.IncreaseWallBlock();
+                        wall.IncreaseWallBlock();
                         System.out.println("Wall Block Chance Increased by 5%");
                         break;
                     case 3: break;
@@ -319,7 +316,7 @@ public class dragonGame {
         int command = 0;
         do {
             //call tower stats from tower class
-            Tower.displayStats();
+            tower.displayStats();
             System.out.println("\n");
             System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
             System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
@@ -334,17 +331,17 @@ public class dragonGame {
                 switch (command) {
                     case 1:
                         gold -= 100;
-                        Tower.upAtkPoint();
+                        tower.upAtkPoint();
                         System.out.println("Tower AttackPoint upgraded +1");
                         break;
                     case 2:
                         gold -= 100;
-                        Tower.upCritChance();
+                        tower.upCritChance();
                         System.out.println(" Tower Critical Chance Upgraded +5");
                         break;
                     case 3:
                         gold -= 100;
-                        Tower.upAccuracy();
+                        tower.upAccuracy();
                         System.out.println(" Tower Accuracy Upgraded 4%");
                         break;
                     case 4:
@@ -358,7 +355,6 @@ public class dragonGame {
         } while (command != 4);
 
     }
-
 
 
     /**
@@ -440,15 +436,15 @@ public class dragonGame {
             if (isCriticalAtk)
                 atkPoint += (int) (atkPoint * 0.5f);
 
-            boolean hasWallBlockedAtk = Math.random() <= //wall.getBlockPercent();
+            boolean hasWallBlockedAtk = Math.random() <= wall.getBlockPercent();
             if (hasWallBlockedAtk) {
                 System.out.println("Wall successfully blocked dragon's attack!");
-                System.out.println("Current Wall's HealthPoint: " + //wall.getHp());
+                System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             } else {
-                //wall.decreaseHp(atkPoint);
+                wall.decreaseHp(atkPoint);
                 System.out.println("Dragon attacked our wall!");
-                System.out.println("Wall's healthpoint minus " + atkPoint);
-                System.out.println("Current Wall's HealthPoint: "  //+ wall.getHp());
+                System.out.println("Wall's health point minus " + atkPoint);
+                System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             }
 
             System.out.println("\n\n");
@@ -464,7 +460,7 @@ public class dragonGame {
                 System.out.println("Tower attacked dragon with critical attack!");
             else
                 System.out.println("Tower attacked dragon!");
-            System.out.println("Dragon's healthpoint minus " + atkPoint);
+            System.out.println("Dragon's health point minus " + atkPoint);
             System.out.println("Current Dragon's HealthPoint: " + dragon.getHp());
 
             // Check if won/lose
