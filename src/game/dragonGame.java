@@ -57,9 +57,10 @@ public class dragonGame {
         System.out.println("\n");
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
-        System.out.println("\n\n");
+        System.out.println("\n");
 
         dragonAttack();
+        dragonFlyingArt();
         dragon.recover();
 
         //game loop starts here
@@ -83,9 +84,6 @@ public class dragonGame {
             // command panel
             int option = 0;
             do {
-                System.out.println("\n");
-                System.out.println("____________________________MAIN MENU____________________________");
-                System.out.println("Select towers, walls and citizens to upgrade their stats OR Start Game.");
                 System.out.println("1. Tower");
                 System.out.println("2. Wall");
                 System.out.println("3. Citizens");
@@ -141,6 +139,7 @@ public class dragonGame {
 
             //put dragon attack method here
             dragonAttack();
+            dragonFlyingArt();
 
             //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
             dragon.levelUp();
@@ -288,15 +287,8 @@ public class dragonGame {
     private void wallMenu(){
         int option = 0;
         do{
-            System.out.println("\n");
-            System.out.println("____________CURRENT STATS____________");
-            System.out.println("Year: " + year);
-            System.out.println("Season: " + SEASONS[currentSeason]);
-            System.out.println("Current Gold: " + gold);
             wall.displayStats();
-            System.out.println("_______________________________________");
-            //System.out.println("\n");
-            System.out.println("Choose which to upgrade.");
+            System.out.println("\n");
             System.out.println("1. Upgrade Health (100 Gold -> 75 HealthPoint)");
             System.out.println("2. Upgrade Block Chance (100 Gold -> 5 Block Chance %)");
             System.out.println("3. Back to Menu");
@@ -335,20 +327,13 @@ public class dragonGame {
         int command = 0;
         do {
             //call tower stats from tower class
-            System.out.println("\n");
-            System.out.println("____________CURRENT STATS____________");
-            System.out.println("Year: " + year);
-            System.out.println("Season: " + SEASONS[currentSeason]);
-            System.out.println("Current Gold: " + gold);
             tower.displayStats();
-            System.out.println("_______________________________________");
-            //System.out.println("\n");
-            System.out.println("Choose which to upgrade.");
+            System.out.println("\n");
             System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
-            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5% Critical Chance)");
+            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
             System.out.println("3. Upgrade Accuracy (100 Gold -> 4% Accuracy)");
             System.out.println("4. Back to menu");
-            System.out.print("Please enter your command: ");
+            System.out.println("Please enter your command: ");
             command = scan.nextInt();
 
             if (command != 4 && gold < 100)
@@ -389,15 +374,8 @@ public class dragonGame {
     private void citizensMenu() {
         int option = 0;
         do {
-            System.out.println("\n");
-            System.out.println("____________________________CURRENT STATS______________________________");
-            System.out.println("Year: " + year);
-            System.out.println("Season: " + SEASONS[currentSeason]);
-            System.out.println("Current Gold: " + gold);
             citizens.displayStats();
-            System.out.println("________________________________________________________________________");
-            //System.out.println("\n");
-            System.out.println("Choose which to increase/decrease.");
+            System.out.println("\n");
             System.out.println("1. Decrease Emotional (50 Gold -> 50 Emotional Point)");
             System.out.println("2. Decrease Nervous (50 Gold -> 50 Nervous Point)");
             System.out.println("3. Decrease Lazy (50 Gold -> 50 Lazy Point)");
@@ -460,7 +438,14 @@ public class dragonGame {
     private void dragonAttack() {
         System.out.println("A dragon performs a sudden attack to your city!");
         dragon.displayStats();
-        System.out.println("\n\n");
+        System.out.println("\n");
+
+        // sleep for 3 second
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         for (int i = 0; i < 10; i++) {
 
@@ -515,6 +500,25 @@ public class dragonGame {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void dragonFlyingArt(){
+        System.out.println("\t\t         \\`----.__                 ____               \n" +
+                "\t\t\t\t  |       `--._         <=#  , *--,           \n" +
+                " \t\t\t\t  /_             `-.    ,/  / `````            \n" +
+                " \t\t\t\t    \\__             (_.'  ,'                   THE DRAGON FLEW AWAY\n" +
+                "\t\t\t\t       \\__ ......'       \\___----^__           \n" +
+                "\t\t\t\t      ./               ,'           `.         \n" +
+                "\t\t\t  |\\     _.'   ___/ )\\...._\"   ___           \\        \n" +
+                "\t\t\t  | \\__.'  __.'            `\"\"'   `\"\"`.'\"\"\"`--\\       \n" +
+                "\t\t\t   \\____.-'                                           \n");
+
+        // sleep for 1 second
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
