@@ -58,7 +58,8 @@ public class dragonGame {
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
         System.out.println("\n");
-        System.out.println("test 2");
+
+        dragonAttackArt();
 
         dragonAttack();
         dragonFlyingArt();
@@ -141,7 +142,7 @@ public class dragonGame {
                 citizens.increaseFearless(-100);
             }
 
-            //put dragon attack method here
+            dragonAttackArt();
             dragonAttack();
             dragonFlyingArt();
 
@@ -547,6 +548,37 @@ public class dragonGame {
             e.printStackTrace();
         }
     }
+
+    public void dragonAttackArt(){
+        System.out.println("" +
+                "                                                                        |          |            \n" +
+                "                                                                        #          #            \n" +
+                "                                                                        %%        *%            \n" +
+                "                                                                       /*/       (#(\\           \n" +
+                "                                                                      /  %&      &( /,          \n" +
+                "       \\****__              ____                       #%%%%%         %/,%/     ((,/&          \n" +
+                "         |    *****\\_      --/ *\\-__                   #%%%%%         (/* #(    ./,/ /          \n" +
+                "         /_          (_    ./ ,/----'                  #%%%%%         (/* /(    ./,/ /          \n" +
+                "           \\__         (_./  /                         #%%%%%         %%%%&&    @##%#@/         \n" +
+                "              \\__           \\___----^__                #%%%%%         /,* (#    @%,/ //         \n" +
+                "               _/   _                  \\               #%%%%%         /,* (#    @%,/ //         \n" +
+                "        |    _/  __/ )\\\"\\ _____         *\\             #%%%%%         /,* (/****(%,/ //         \n" +
+                "        |\\__/   /    ^ ^       \\____      )            #%%%%%         /,* (# /\\ @%,/ //         \n" +
+                "         \\___--\"                    \\_____ )           #%%%%%         /,* (#    @%,/ //         \n" +
+                "                                          \"            #%%%%%         /,* (#    @%,/ //         \n" +
+                "                                                       #%%%%%         /,* (#    @%,( //         \n" +
+                "                                                       #%%%%%         /,* (#    @%,( (/         \n" +
+                "                                                       #%%%%%         /,* ##%.(@@@,( (/         \n" +
+                "                                                       #%%%%%        @@@@@@@@.@*%*@@@@@@ ");
+
+        // sleep for 1 second
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * MAIN METHOD
