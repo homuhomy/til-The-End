@@ -308,17 +308,17 @@ public class dragonGame {
             System.out.print("Please Enter your command: ");
             option = scan.nextInt();
 
-            if (option != 3 && gold < 50)
+            if (option != 3 && gold < 100)
                 System.out.println("You do not have enough gold to upgrade.");
             else{
                 switch(option){
                     case 1:
-                        gold-=50;
+                        gold-=100;
                         wall.IncreaseWallHp();
                         System.out.println("Wall Health Increased by 75");
                         break;
                     case 2:
-                        gold-=50;
+                        gold-=100;
                         wall.IncreaseWallBlock();
                         System.out.println("Wall Block Chance Increased by 5%");
                         break;
