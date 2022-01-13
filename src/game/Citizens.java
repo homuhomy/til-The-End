@@ -69,7 +69,7 @@ public class Citizens{
      * displays the stats of the citizens
      */
     public void displayStats() {
-        System.out.println("\n");
+        //System.out.println("\n");
         System.out.println("Citizen's Emotional (Decrease Tower's AttackPoint by 1) : " + emotional);
         System.out.println("Citizen's Nervous (Decrease Tower Accuracy Percentage by 5%) : " + nervous);
         System.out.println("Citizen's Lazy (Decrease Wall's HealthPoint by 100) : " + lazy);
