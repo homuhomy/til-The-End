@@ -9,7 +9,6 @@ public class dragonGame {
     public static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
 
     //different season events
-    //extra: add more varieties to the events
     public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
             " Festival! Berserk, Diligent and Fearless +50 ", "There's a free gift from a shop! Wall's Health Point +75" };
     public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
@@ -57,6 +56,7 @@ public class dragonGame {
         System.out.println("\n");
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
+        System.out.println("Citizens: PREPARE TO PROTECT OUR CITY!!");
         System.out.println("\n");
 
         dragonAttackArt();
@@ -596,6 +596,8 @@ public class dragonGame {
         for (int i = 0; i < 10; i++) {
 
             // 1. Dragon attack on wall
+            System.out.println("ATTACK " + (i+1) + "!!");
+            System.out.println("_______________________________________________________________________________");
             int atkPoint = dragon.getAtkPoint();
             boolean isCriticalAtk = Math.random() <= dragon.getCritChance();
             if (isCriticalAtk)
@@ -640,8 +642,8 @@ public class dragonGame {
                 System.exit(0);
             }
 
-            System.out.println("\n");
-            System.out.println("_______________________________________________________________________________");
+//            System.out.println("\n");
+//            System.out.println("_______________________________________________________________________________");
             System.out.println("\n");
 
             // sleep for 1 second
