@@ -10,6 +10,7 @@ public class Wall {
 
     public void IncreaseWallBlock(){
         blockPercent+=0.05f;
+        blockPercent = Math.min(0.5f, blockPercent);
     }
 
     public void decreaseHp(int atkPoint){
@@ -23,7 +24,7 @@ public class Wall {
     public void displayStats(){
         //System.out.println("\n");
         System.out.println("Wall's HP : "+hp);
-        System.out.print("\nWall's Block : "+String.format("%.1f",blockPercent*100) + "% (Max is 50%) \n");
+        System.out.print("Wall's Block : "+String.format("%.1f",blockPercent*100) + "% (Max is 50%) \n");
     }
 
     //getters
