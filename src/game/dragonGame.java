@@ -1,5 +1,6 @@
 package game;
 
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,6 +34,8 @@ public class dragonGame {
     public Scanner scan;
     public Random random;
 
+    private int Load,Save;
+
     /**
      * Constructor
      */
@@ -50,8 +53,6 @@ public class dragonGame {
      * run the game
      */
     public void run(){
-        //new game option or continue game (load)
-
         //new game
         System.out.println("\n");
         System.out.println("Citizen A: ...wait what is that?");
@@ -59,12 +60,22 @@ public class dragonGame {
         System.out.println("Citizens: PREPARE TO PROTECT OUR CITY!!");
         System.out.println("\n");
 
+        //new game option or continue game (load)
+        System.out.println("1 : Proceed to the game");
+        System.out.println("2 : Load the previous save");
+        Load = scan.nextInt();
+
+        switch(Load) {
+            case 1: break;
+            case 2: loadGame();
+            default: break;
+        }
         dragonAttackArt();
 
         dragonAttack();
         dragonFlyingArt();
-        dragon.recover();
         dragon.levelUp();
+        dragon.recover();
 
         //game loop starts here
         while(true){
@@ -87,6 +98,7 @@ public class dragonGame {
             System.out.println("Season: " + SEASONS[currentSeason]);
             System.out.println("Gold: " + gold);
 
+
             // command panel
             int option = 0;
             do {
@@ -97,6 +109,7 @@ public class dragonGame {
                 System.out.println("2. Wall");
                 System.out.println("3. Citizens");
                 System.out.println("4. I am all ready!");
+                System.out.println("5. Save");
                 System.out.print("Please enter your command: ");
                 option = scan.nextInt();
 
@@ -113,6 +126,9 @@ public class dragonGame {
                     // Move to dragon attack
                     case 4:
                         break;
+                    // Save current stats
+                    case 5:
+                        saveGame();
                     // Invalid option
                     default:
                         break;
@@ -769,7 +785,89 @@ public class dragonGame {
         }
     }
 
+    private void saveGame() {
+        try {
+            FileOutputStream fos = new FileOutputStream("save.dat");
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
 
+            dataStorage dStorage = new dataStorage();
+            //menu stats
+            dStorage.tax = tax;
+            dStorage.year = year;
+            dStorage.gold = gold;
+            dStorage.currentEvent1 = event1;
+            dStorage.currentEvent2 = event2;
+            dStorage.currentSeason = currentSeason;
+            //dragon stats
+            dStorage.dragonHP = dragon.getHp();
+            dStorage.dragonLevel = dragon.getDragonLevel();
+            dStorage.dragonAccuracy = dragon.getDragonAccuracy();
+            dStorage.dragonAttackPoint = dragon.getDragonAttackPoint();
+            dStorage.dragonCritChance = dragon.getDragonCritChance();
+            //wall stats
+            dStorage.wallHP = wall.getHp();
+            dStorage.wallBlockPercentage = wall.getBlockPercent();
+            //tower stats
+            dStorage.towerCritChance = tower.getCritChance();
+            dStorage.towerAccuracy = tower.getTowerAccuracy();
+            dStorage.towerAttackPoint = tower.getTowerAttackPoint();
+            //emotions stats
+            dStorage.emotional = citizens.getEmotional();
+            dStorage.nervous = citizens.getNervous();
+            dStorage.lazy = citizens.getLazy();
+            dStorage.berserk = citizens.getBerserk();
+            dStorage.diligent = citizens.getDiligent();
+            dStorage.fearless = citizens.getFearless();
+
+            oos.writeObject(dStorage);
+            oos.close();
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void loadGame() {
+        try {
+            FileInputStream fis = new FileInputStream("save.dat");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+
+            dataStorage dStorage = (dataStorage)ois.readObject();
+            //menu stats
+            tax = dStorage.tax;
+            year = dStorage.year;
+            gold = dStorage.gold;
+            event1 = dStorage.currentEvent1;
+            event2 = dStorage.currentEvent2;
+            currentSeason = dStorage.currentSeason;
+            //dragon stats
+            dragon.OWdragonHP(dStorage.dragonHP);
+            dragon.OWdragonLevel(dStorage.dragonLevel);
+            dragon.OWdragonAccuracy(dStorage.dragonAccuracy);
+            dragon.OWdragonAttackPoint(dStorage.dragonAttackPoint);
+            dragon.OWdragonCritChance(dStorage.dragonCritChance);
+            //wall stats
+            wall.OWwallHP(dStorage.wallHP);
+            wall.OWwallBlockPercentage(dStorage.wallBlockPercentage);
+            //tower stats
+            tower.OWtowerCritChance(dStorage.towerCritChance);
+            tower.OWtowerAccuracy(dStorage.towerAccuracy);
+            tower.OWtowerAttackPoint(dStorage.towerAttackPoint);
+            //emotions stats
+            citizens.OWemotional(dStorage.emotional);
+            citizens.OWnervous(dStorage.nervous);
+            citizens.OWlazy(dStorage.lazy);
+            citizens.OWberserk(dStorage.berserk);
+            citizens.OWdiligent(dStorage.diligent);
+            citizens.OWfearless(dStorage.fearless);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     /**

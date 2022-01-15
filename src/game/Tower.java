@@ -43,4 +43,23 @@ public class Tower extends sameBehaviour {
 
     }
 
+    //method for overwriting parent stats for load - izzul
+    public  void OWtowerCritChance(float a) {
+        critChance = a;
+    }
+    public  void OWtowerAccuracy(float a) {
+        accuracy = a;
+    }
+    public  void OWtowerAttackPoint(int a) {
+        atkPoint = a;
+    }
+
+    //getters
+    public float getTowerAccuracy() {
+        return accuracy;
+    }
+    public int getTowerAttackPoint() {
+        return atkPoint;
+    }
+
 }

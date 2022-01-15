@@ -81,6 +81,26 @@ public class Citizens{
         System.out.println("Citizen's Fearless (Increase Tower Critical Chance Percentage by 5%) : " + fearless);
     }
 
+    //method for overwriting parent stats for load - izzul
+    public  void OWemotional(int a) {
+        emotional = a;
+    }
+    public  void OWnervous(int a) {
+        nervous = a;
+    }
+    public  void OWlazy(int a) {
+        lazy = a;
+    }
+    public  void OWberserk(int a) {
+        berserk = a;
+    }
+    public  void OWdiligent(int a) {
+        diligent = a;
+    }
+    public  void OWfearless(int a) {
+        fearless = a;
+    }
+
     // getters
 
     public int getEmotional() {

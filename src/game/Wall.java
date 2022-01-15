@@ -26,6 +26,14 @@ public class Wall {
         System.out.print("Wall's Block : "+String.format("%.1f",blockPercent*100) + "% (Max is 50%) \n");
     }
 
+    //method for overwriting parent stats for load - izzul
+    public  void OWwallHP(int a) {
+        hp = a;
+    }
+    public  void OWwallBlockPercentage(float a) {
+        blockPercent = a;
+    }
+
     //getters
     public float getBlockPercent(){
         return blockPercent;

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class dataStorage implements Serializable {
     //menu stats
     int tax,year,currentSeason,gold;
-    String currentEvent;
+    String currentEvent1,currentEvent2;
     //dragon stats
     int dragonAttackPoint,dragonLevel,dragonHP;
     float dragonCritChance,dragonAccuracy;
