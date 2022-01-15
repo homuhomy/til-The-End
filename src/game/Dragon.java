@@ -46,9 +46,8 @@ public class Dragon extends sameBehaviour {
         level++;
         hp += 15;
         atkPoint++;
-        if(critChance!=50.0){
-            critChance += 0.02f;
-        }
+        critChance += 0.02f;
+
 
 
     }
