@@ -460,7 +460,7 @@ public class dragonGame {
             //System.out.println("\n");
             System.out.println("Choose which to upgrade.");
             System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
-            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
+            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %)");
             System.out.println("3. Upgrade Accuracy (100 Gold -> 4% Accuracy)");
             System.out.println("4. Back to menu");
             System.out.print("Please enter your command: ");
@@ -639,6 +639,7 @@ public class dragonGame {
             } else if (wall.getHp() <= 0) {
                 gameOver();
                 System.out.println("You failed to protect your city!");
+                newMusic.playmusic();
                 System.exit(0);
             }
 
@@ -673,6 +674,7 @@ public class dragonGame {
                 "┃┃╭━┫╰━╯┃┃┃┃┃┃╭━━╯┃┃╱┃┃┃╰╯┃┃╭━━┫╭╮╭╯\n" +
                 "┃╰┻━┃╭━╮┃┃┃┃┃┃╰━━╮┃╰━╯┃╰╮╭╯┃╰━━┫┃┃╰╮\n" +
                 "╰━━━┻╯╱╰┻╯╰╯╰┻━━━╯╰━━━╯╱╰╯╱╰━━━┻╯╰━╯");
+        //newMusic.playmusic();
     }
     public void dragonFlyingArt(){
         System.out.println("\t\t         \\`----.__                 ____               \n" +
@@ -722,6 +724,8 @@ public class dragonGame {
             e.printStackTrace();
         }
     }
+
+
 
 
     /**

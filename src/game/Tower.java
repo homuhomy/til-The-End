@@ -15,7 +15,8 @@ public class Tower extends sameBehaviour {
     public void upCritChance() {
         critChance += 0.05f;
         critChance = Math.min(0.5f, critChance);
-    }
+        }
+
 
     public void upAccuracy() {
         accuracy += 0.04f;
@@ -36,8 +37,8 @@ public class Tower extends sameBehaviour {
     public void displayStats() {
         //System.out.println("\n");
         System.out.println("Tower's AttackPoint: " + atkPoint);
-        System.out.print("Towers Critical Chance: " + (critChance * 100) + "% (Max is 50%)");
-        System.out.print("\nTower's Accuracy: " + (accuracy * 100) + "% (Max is 100%) \n");
+        System.out.print("Towers Critical Chance: " + String.format("%.1f", critChance * 100) + "% (Max is 50%)");
+        System.out.print("\nTower's Accuracy: " + String.format("%.1f", accuracy * 100) + "% (Max is 100%) \n");
         //System.out.println("\n");
 
     }

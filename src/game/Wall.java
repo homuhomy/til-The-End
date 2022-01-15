@@ -23,7 +23,7 @@ public class Wall {
     public void displayStats(){
         //System.out.println("\n");
         System.out.println("Wall's HP : "+hp);
-        System.out.print("\nWall's Block : "+String.format("%.1f",blockPercent*100) + "% (Max is 50%) \n");
+        System.out.print("Wall's Block : "+String.format("%.1f",blockPercent*100) + "% (Max is 50%) \n");
     }
 
     //getters
