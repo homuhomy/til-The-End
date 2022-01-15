@@ -75,7 +75,7 @@ public class newMusic {
         String responds = s.next();
     }
 
-    public static void playMusicDragonAttack(String musicLocation){
+    public static void playMusic(String musicLocation){
         try {
             File musicPath = new File(musicLocation);
 

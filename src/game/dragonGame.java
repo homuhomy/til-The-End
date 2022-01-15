@@ -103,6 +103,8 @@ public class dragonGame {
             System.out.println("Season: " + SEASONS[currentSeason]);
             System.out.println("Gold: " + gold);
 
+            String menumusic = "menumusic.wav";
+            newMusic.playMusic(menumusic);
 
             // command panel
             int option = 0;
@@ -131,6 +133,7 @@ public class dragonGame {
                         break;
                     // Move to dragon attack
                     case 4:
+                        newMusic.stopMusic();
                         break;
                     // Save current stats
                     case 5:
@@ -648,7 +651,7 @@ public class dragonGame {
      */
     private void dragonAttack() {
         String dragonAttackPath = "dragonatk.wav";
-        newMusic.playMusicDragonAttack(dragonAttackPath);
+        newMusic.playMusic(dragonAttackPath);
 
         System.out.println("\n");
         System.out.println("A dragon performs a sudden attack to your city!");
