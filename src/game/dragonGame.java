@@ -1,5 +1,6 @@
 package game;
 
+import javax.sound.sampled.Clip;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,6 +25,8 @@ public class dragonGame {
     public Citizens citizens;
 
     public newMusic music;
+    public Clip clip;
+    public newMusic dummyMethod;
 
     public int year = 1;
     public int currentSeason = 0;
@@ -682,11 +685,13 @@ public class dragonGame {
 
             //Check if won/lose
             if (dragon.getHp() <= 0) {
+                newMusic.stopMusic();
                 youWon();
                 System.out.println("You killed the dragon! You protected the city!");
                 newMusic.playmusicWin();
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
+                newMusic.stopMusic();
                 gameOver();
                 System.out.println("You failed to protect your city!");
                 newMusic.playmusicLose();
@@ -724,7 +729,6 @@ public class dragonGame {
                 "┃┃╭━┫╰━╯┃┃┃┃┃┃╭━━╯┃┃╱┃┃┃╰╯┃┃╭━━┫╭╮╭╯\n" +
                 "┃╰┻━┃╭━╮┃┃┃┃┃┃╰━━╮┃╰━╯┃╰╮╭╯┃╰━━┫┃┃╰╮\n" +
                 "╰━━━┻╯╱╰┻╯╰╯╰┻━━━╯╰━━━╯╱╰╯╱╰━━━┻╯╰━╯");
-        //newMusic.playmusic();
     }
     public void dragonFlyingArt(){
         System.out.println("\t\t         \\`----.__                 ____               \n" +

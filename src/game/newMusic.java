@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class newMusic {
 
+    static Clip clip;
+
     public static void playmusicLose() {
 
         Scanner s = new Scanner(System.in);
@@ -20,7 +22,7 @@ public class newMusic {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Clip clip = null;
+        //Clip clip = null;
         try {
             clip = AudioSystem.getClip();
         } catch (LineUnavailableException e) {
@@ -74,13 +76,12 @@ public class newMusic {
     }
 
     public static void playMusicDragonAttack(String musicLocation){
-        try
-        {
+        try {
             File musicPath = new File(musicLocation);
 
             if(musicPath.exists()){
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
+                clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 clip.start();
             }
@@ -91,5 +92,9 @@ public class newMusic {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+    // call stop method to stop clip from playing
+    public static void stopMusic(){
+        clip.stop();
     }
 }
