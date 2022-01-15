@@ -430,9 +430,11 @@ public class dragonGame {
                         System.out.println("Wall Health Increased by 75");
                         break;
                     case 2:
-                        gold-=100;
-                        wall.IncreaseWallBlock();
-                        System.out.println("Wall Block Chance Increased by 5%");
+                        if(wall.getBlockPercent()!=0.5f){
+                            gold-=50;
+                            wall.IncreaseWallBlock();
+                            System.out.println("Wall Block Chance Increased by 5%");
+                        }
                         break;
                     case 3: break;
                     default:
