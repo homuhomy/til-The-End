@@ -63,8 +63,8 @@ public class dragonGame {
 
         dragonAttack();
         dragonFlyingArt();
-        dragon.recover();
         dragon.levelUp();
+        dragon.recover();
 
         //game loop starts here
         while(true){
