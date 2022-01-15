@@ -10,6 +10,7 @@ public class Wall {
 
     public void IncreaseWallBlock(){
         blockPercent+=0.05f;
+        blockPercent = Math.min(0.5f, blockPercent);
     }
 
     public void decreaseHp(int atkPoint){
