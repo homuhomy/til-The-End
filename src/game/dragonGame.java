@@ -23,9 +23,11 @@ public class dragonGame {
     private Wall wall;
     public Citizens citizens;
 
+    public newMusic music;
+
     public int year = 1;
-    public  int currentSeason = 0;
-    public  int tax = 200;
+    public int currentSeason = 0;
+    public int tax = 200;
     public int RandomGold = 0;
     public int gold = 200;
     public String event1, event2;
@@ -44,6 +46,7 @@ public class dragonGame {
 
         scan = new Scanner(System.in);
         random = new Random();
+        music = new newMusic();
     }
 
     /**
@@ -624,6 +627,9 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
+        String filepath = "dragonatk.wav";
+        newMusic.playMusicDragonAttack(filepath);
+
         System.out.println("\n");
         System.out.println("A dragon performs a sudden attack to your city!");
         dragon.displayStats();
@@ -674,7 +680,7 @@ public class dragonGame {
             System.out.println("Dragon's health point minus " + atkPoint);
             System.out.println("Current Dragon's HealthPoint: " + dragon.getHp());
 
-            // Check if won/lose
+            //Check if won/lose
             if (dragon.getHp() <= 0) {
                 youWon();
                 System.out.println("You killed the dragon! You protected the city!");

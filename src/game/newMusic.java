@@ -73,5 +73,23 @@ public class newMusic {
         String responds = s.next();
     }
 
+    public static void playMusicDragonAttack(String musicLocation){
+        try
+        {
+            File musicPath = new File(musicLocation);
 
+            if(musicPath.exists()){
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            }
+            else{
+                System.out.println("Can't find file");
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
