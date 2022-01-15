@@ -9,11 +9,12 @@ public class newMusic {
 
     static Clip clip;
 
-    public static void playMusicLose() {
+    //play sound for win or lose condition
+    public static void playSound(String soundLocation) {
 
         Scanner s = new Scanner(System.in);
 
-        File file = new File("gameover1.wav");
+        File file = new File(soundLocation);
         AudioInputStream audioStream = null;
         try {
             audioStream = AudioSystem.getAudioInputStream(file);
@@ -42,39 +43,7 @@ public class newMusic {
         String responds = s.next();
     }
 
-    public static void playMusicWin() {
-
-        Scanner s = new Scanner(System.in);
-
-        File file = new File("win.wav");
-        AudioInputStream audioStream = null;
-        try {
-            audioStream = AudioSystem.getAudioInputStream(file);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Clip clip = null;
-        try {
-            clip = AudioSystem.getClip();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
-        try {
-            clip.open(audioStream);
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        clip.start();
-
-        System.out.println("\n Press any key and enter to exit game.");
-        String responds = s.next();
-    }
-
+    //play music for dragon attack and main menu
     public static void playMusic(String musicLocation){
         try {
             File musicPath = new File(musicLocation);
@@ -93,6 +62,8 @@ public class newMusic {
             e.printStackTrace();
         }
     }
+
+
     // call stop method to stop clip from playing
     public static void stopMusic(){
         clip.stop();

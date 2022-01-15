@@ -708,13 +708,16 @@ public class dragonGame {
                 newMusic.stopMusic();
                 youWon();
                 System.out.println("You killed the dragon! You protected the city!");
-                newMusic.playMusicWin();
+                String win = "win.wav";
+                newMusic.playSound(win);
                 System.exit(0);
+
             } else if (wall.getHp() <= 0) {
                 newMusic.stopMusic();
                 gameOver();
                 System.out.println("You failed to protect your city!");
-                newMusic.playMusicLose();
+                String lose = "gameover1.wav";
+                newMusic.playSound(lose);
                 System.exit(0);
             }
 
