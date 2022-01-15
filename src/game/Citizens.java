@@ -16,15 +16,18 @@ public class Citizens{
     private int fearless = 10;
 
     public void decreaseEmotional() {
-        Math.max(emotional - 50, 0);
+        emotional-=50;
+        //Math.max(emotional - 50, 0);
     }
 
     public void decreaseNervous() {
-        Math.max(nervous - 50, 0);
+        nervous -=50;
+        //Math.max(nervous - 50, 0);
     }
 
     public void decreaseLazy() {
-        Math.max(lazy - 50, 0);
+        //Math.max(lazy - 50, 0)
+        lazy -=50;
     }
 
     public void increaseBerserk() {

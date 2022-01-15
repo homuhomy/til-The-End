@@ -9,13 +9,12 @@ public class dragonGame {
     public static final String[] SEASONS = { "Spring", "Summer", "Autumn", "Winter" };
 
     //different season events
-    //extra: add more varieties to the events
     public static final String[] SPRING_EVENTS = { "Reinforcement! Tower's AttackPoint +1", "Visitors! Gold +100",
-            " Festival! Berserk, Diligent and Fearless +50 " };
+            " Festival! Berserk, Diligent and Fearless +50 ", "There's a free gift from a shop! Wall's Health Point +75" };
     public static final String[] SUMMER_EVENTS = { "oh no it's the drought! Wall's HealthPoint -50 ",
-            "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50" };
+            "Outing! Berserk, Diligent and Fearless +50", "Heatstroke! Emotional, Nervous, Lazy +50", "Yummy ice cream! Wall's Health Point +75" };
     public static final String[] AUTUMN_EVENTS = { "Oh no it's rainy! Tower Accuracy -20%", "Oh no it's the flood! Wall's HealthPoint -50",
-            "Harvest! +100 Gold" };
+            "Harvest! +100 Gold", "You got an extra help from the government! Attack Point +1 " };
     public static final String[] WINTER_EVENTS = { "Oh no it's the blizzard! Wall's HealthPoint -50",
             "Avalanche! Emotional, Nervous, Lazy +50", "Hunger! Tower Accuracy-20%", "Tour group! +100 Gold" };
 
@@ -29,7 +28,7 @@ public class dragonGame {
     public  int tax = 200;
     public int RandomGold = 0;
     public int gold = 200;
-    public String event;
+    public String event1, event2;
 
     public Scanner scan;
     public Random random;
@@ -54,17 +53,24 @@ public class dragonGame {
         //new game option or continue game (load)
 
         //new game
+        System.out.println("\n");
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
+        System.out.println("Citizens: PREPARE TO PROTECT OUR CITY!!");
         System.out.println("\n");
 
+        dragonAttackArt();
+
         dragonAttack();
+        dragonFlyingArt();
         dragon.recover();
+        dragon.levelUp();
 
         //game loop starts here
         while(true){
-            //execute random event
-            event = executeRandomEvent();
+            //execute 2 random events
+            event1 = executeRandomEvent1();
+            event2 = executeRandomEvent2();
             //execute tax from citizens
             ExecuteTax();
             tax = RandomGold;
@@ -72,7 +78,10 @@ public class dragonGame {
 
 
             //code for main menu
-            System.out.println("Event: " + event);
+            System.out.println("\n");
+            System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
+            System.out.println("EVENT 1: " + event1);
+            System.out.println("EVENT 2: " + event2);
             System.out.println("Tax received from citizens this season: " + tax);
             System.out.println("Year: " + year);
             System.out.println("Season: " + SEASONS[currentSeason]);
@@ -81,6 +90,9 @@ public class dragonGame {
             // command panel
             int option = 0;
             do {
+                System.out.println("\n");
+                System.out.println("____________________________MAIN MENU____________________________");
+                System.out.println("Select towers, walls and citizens to upgrade their stats OR Start Game.");
                 System.out.println("1. Tower");
                 System.out.println("2. Wall");
                 System.out.println("3. Citizens");
@@ -134,15 +146,17 @@ public class dragonGame {
                 citizens.increaseFearless(-100);
             }
 
-            //put dragon attack method here
+            dragonAttackArt();
             dragonAttack();
+            dragonFlyingArt();
 
             //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
             dragon.levelUp();
             dragon.recover();
 
             // reset event's temporary effects
-            if ((SEASONS[currentSeason].equals("Autumn") && event.contains("Rainy")) || (SEASONS[currentSeason].equals("Winter") && event.contains("Hunger"))){
+            if ((SEASONS[currentSeason].equals("Autumn") && event1.contains("Rainy")) || event2.contains("Rainy") || (SEASONS[currentSeason].equals("Winter")
+                    && event1.contains("Hunger") || event2.contains("Hunger"))){
                 tower.decreaseAccuracy(0.02f);
             }
 
@@ -161,23 +175,24 @@ public class dragonGame {
      *
      * @return the executed event
      */
-    private String executeRandomEvent() {
+    private String executeRandomEvent1() {
 
         // set random event
-        String event = "";
-        int eventIndex = random.nextInt(3);
+        //first event
+        String event1 = "";
+        int eventIndex = random.nextInt(4);
         switch (SEASONS[currentSeason]) {
             case "Spring":
-                event = SPRING_EVENTS[eventIndex];
+                event1 = SPRING_EVENTS[eventIndex];
                 break;
             case "Summer":
-                event = SUMMER_EVENTS[eventIndex];
+                event1 = SUMMER_EVENTS[eventIndex];
                 break;
             case "Autumn":
-                event = AUTUMN_EVENTS[eventIndex];
+                event1 = AUTUMN_EVENTS[eventIndex];
                 break;
             case "Winter":
-                event = WINTER_EVENTS[eventIndex];
+                event1 = WINTER_EVENTS[eventIndex];
                 break;
         }
 
@@ -196,6 +211,8 @@ public class dragonGame {
                         citizens.increaseDiligent();
                         citizens.increaseFearless();
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Summer":
@@ -213,6 +230,8 @@ public class dragonGame {
                         citizens.increaseNervous(50);
                         citizens.increaseLazy(50);
                         break;
+                    case 3:
+                        wall.increaseHp();
                 }
                 break;
             case "Autumn":
@@ -226,6 +245,8 @@ public class dragonGame {
                     case 2:
                         gold += 100;
                         break;
+                    case 3:
+                        tower.upAtkPoint();
                 }
                 break;
             case "Winter":
@@ -248,7 +269,103 @@ public class dragonGame {
                 break;
         }
 
-        return event;
+        return event1;
+    }
+    private String executeRandomEvent2() {
+
+        // set random event
+        //first event
+        String event2 = "";
+        int eventIndex = random.nextInt(4);
+        switch (SEASONS[currentSeason]) {
+            case "Spring":
+                event2 = SPRING_EVENTS[eventIndex];
+                break;
+            case "Summer":
+                event2 = SUMMER_EVENTS[eventIndex];
+                break;
+            case "Autumn":
+                event2 = AUTUMN_EVENTS[eventIndex];
+                break;
+            case "Winter":
+                event2 = WINTER_EVENTS[eventIndex];
+                break;
+        }
+
+        // apply event
+        switch (SEASONS[currentSeason]) {
+            case "Spring":
+                switch (eventIndex) {
+                    case 0:
+                        tower.upAtkPoint();
+                        break;
+                    case 1:
+                        gold += 100;
+                        break;
+                    case 2:
+                        citizens.increaseBerserk();
+                        citizens.increaseDiligent();
+                        citizens.increaseFearless();
+                        break;
+                    case 3:
+                        wall.increaseHp();
+                }
+                break;
+            case "Summer":
+                switch (eventIndex) {
+                    case 0:
+                        wall.decreaseHp(50);
+                        break;
+                    case 1:
+                        citizens.increaseBerserk();
+                        citizens.increaseDiligent();
+                        citizens.increaseFearless();
+                        break;
+                    case 2:
+                        citizens.increaseEmotional(50);
+                        citizens.increaseNervous(50);
+                        citizens.increaseLazy(50);
+                        break;
+                    case 3:
+                        wall.increaseHp();
+                }
+                break;
+            case "Autumn":
+                switch (eventIndex) {
+                    case 0:
+                        tower.decreaseAccuracy(0.2f);// temporary
+                        break;
+                    case 1:
+                        wall.decreaseHp(50);
+                        break;
+                    case 2:
+                        gold += 100;
+                        break;
+                    case 3:
+                        tower.upAtkPoint();
+                }
+                break;
+            case "Winter":
+                switch (eventIndex) {
+                    case 0:
+                        wall.decreaseHp(50);
+                        break;
+                    case 1:
+                        citizens.increaseEmotional(50);
+                        citizens.increaseNervous(50);
+                        citizens.increaseLazy(50);
+                        break;
+                    case 2:
+                        tower.decreaseAccuracy(0.2f);// temporary
+                        break;
+                    case 3:
+                        gold += 100;
+                        break;
+                }
+                break;
+        }
+
+        return event2;
     }
 
 
@@ -283,27 +400,47 @@ public class dragonGame {
     private void wallMenu(){
         int option = 0;
         do{
-            wall.displayStats();
+            //wall.displayStats();
             System.out.println("\n");
+            System.out.println("____________CURRENT STATS____________");
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Current Gold: " + gold);
+            wall.displayStats();
+            System.out.println("_______________________________________");
+            //System.out.println("\n");
+            System.out.println("Choose which to upgrade.");
             System.out.println("1. Upgrade Health (100 Gold -> 75 HealthPoint)");
             System.out.println("2. Upgrade Block Chance (100 Gold -> 5 Block Chance %)");
             System.out.println("3. Back to Menu");
             System.out.print("Please Enter your command: ");
             option = scan.nextInt();
 
-            if (option != 3 && gold < 50)
+            if (option != 3 && gold < 100) {
+                System.out.println("\n");
+                System.out.println("==============================================");
                 System.out.println("You do not have enough gold to upgrade.");
+                System.out.println("==============================================");
+            }
             else{
                 switch(option){
                     case 1:
-                        gold-=50;
+                        gold-=100;
                         wall.IncreaseWallHp();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Wall Health Increased by 75");
+                        System.out.println("==============================================");
                         break;
                     case 2:
-                        gold-=50;
-                        wall.IncreaseWallBlock();
-                        System.out.println("Wall Block Chance Increased by 5%");
+                        if(wall.getBlockPercent()<0.5f){
+                            gold-=50;
+                            wall.IncreaseWallBlock();
+                            System.out.println("\n");
+                            System.out.println("==============================================");
+                            System.out.println("Wall Block Chance Increased by 5%");
+                            System.out.println("==============================================");
+                        }
                         break;
                     case 3: break;
                     default:
@@ -323,39 +460,62 @@ public class dragonGame {
         int command = 0;
         do {
             //call tower stats from tower class
-            tower.displayStats();
             System.out.println("\n");
+            System.out.println("____________CURRENT STATS____________");
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Current Gold: " + gold);
+            tower.displayStats();
+            System.out.println("_______________________________________");
+            //System.out.println("\n");
+            System.out.println("Choose which to upgrade.");
             System.out.println("1. Upgrade Attack (100 Gold -> 1 AttackPoint)");
-            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %");
+            System.out.println("2. Upgrade Critical Chance (100 Gold -> 5 Critical Chance %)");
             System.out.println("3. Upgrade Accuracy (100 Gold -> 4% Accuracy)");
             System.out.println("4. Back to menu");
-            System.out.println("Please enter your command: ");
+            System.out.print("Please enter your command: ");
             command = scan.nextInt();
 
-            if (command != 4 && gold < 100)
+            if (command != 4 && gold < 100) {
+                System.out.println("\n");
+                System.out.println("==============================================");
                 System.out.println("You do not have enough gold to upgrade.");
+                System.out.println("==============================================");
+            }
             else {
                 switch (command) {
                     case 1:
                         gold -= 100;
                         tower.upAtkPoint();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Tower AttackPoint upgraded +1");
+                        System.out.println("==============================================");
                         break;
                     case 2:
                         gold -= 100;
                         tower.upCritChance();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println(" Tower Critical Chance Upgraded +5");
+                        System.out.println("==============================================");
                         break;
                     case 3:
                         gold -= 100;
                         tower.upAccuracy();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println(" Tower Accuracy Upgraded 4%");
+                        System.out.println("==============================================");
                         break;
                     case 4:
                         break;
 
                     default:
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Invalid Option Selected.");
+                        System.out.println("==============================================");
                         break;
                 }
             }
@@ -370,8 +530,15 @@ public class dragonGame {
     private void citizensMenu() {
         int option = 0;
         do {
-            citizens.displayStats();
             System.out.println("\n");
+            System.out.println("____________________________CURRENT STATS______________________________");
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Current Gold: " + gold);
+            citizens.displayStats();
+            System.out.println("________________________________________________________________________");
+            //System.out.println("\n");
+            System.out.println("Choose which to increase/decrease.");
             System.out.println("1. Decrease Emotional (50 Gold -> 50 Emotional Point)");
             System.out.println("2. Decrease Nervous (50 Gold -> 50 Nervous Point)");
             System.out.println("3. Decrease Lazy (50 Gold -> 50 Lazy Point)");
@@ -382,45 +549,70 @@ public class dragonGame {
             System.out.print("Please Enter your command: ");
             option = scan.nextInt();
 
-            if (option != 7 && gold < 50)
+            if (option != 7 && gold < 50) {
+                System.out.println("\n");
+                System.out.println("==============================================");
                 System.out.println("You do not have enough gold to upgrade.");
+                System.out.println("==============================================");
+            }
             else {
                 switch (option) {
                     case 1:
                         gold -= 50;
                         citizens.decreaseEmotional();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Emotional decreased -50");
+                        System.out.println("==============================================");
                         break;
                     case 2:
                         gold -= 50;
                         citizens.decreaseNervous();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Nervous decreased -50");
+                        System.out.println("==============================================");
                         break;
                     case 3:
                         gold -= 50;
                         citizens.decreaseLazy();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Lazy decreased -50");
+                        System.out.println("==============================================");
                         break;
                     case 4:
                         gold -= 50;
                         citizens.increaseBerserk();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Berserk Increased +50");
+                        System.out.println("==============================================");
                         break;
                     case 5:
                         gold -= 50;
                         citizens.increaseDiligent();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Diligent Increased +50");
+                        System.out.println("==============================================");
                         break;
                     case 6:
                         gold -= 50;
                         citizens.increaseFearless();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Fearless Increased +50");
+                        System.out.println("==============================================");
                         break;
                     case 7:
                         break;
 
                     default:
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Invalid Option Selected.");
+                        System.out.println("==============================================");
                         break;
                 }
             }
@@ -432,13 +624,14 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
+        System.out.println("\n");
         System.out.println("A dragon performs a sudden attack to your city!");
         dragon.displayStats();
         System.out.println("\n");
 
-        // sleep for 5 second
+        // sleep for 3 second
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -446,6 +639,8 @@ public class dragonGame {
         for (int i = 0; i < 10; i++) {
 
             // 1. Dragon attack on wall
+            System.out.println("ATTACK " + (i+1) + "!!");
+            System.out.println("_______________________________________________________________________________");
             int atkPoint = dragon.getAtkPoint();
             boolean isCriticalAtk = Math.random() <= dragon.getCritChance();
             if (isCriticalAtk)
@@ -481,13 +676,19 @@ public class dragonGame {
 
             // Check if won/lose
             if (dragon.getHp() <= 0) {
+                youWon();
                 System.out.println("You killed the dragon! You protected the city!");
+                newMusic.playmusicWin();
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
+                gameOver();
                 System.out.println("You failed to protect your city!");
+                newMusic.playmusicLose();
                 System.exit(0);
             }
 
+//            System.out.println("\n");
+//            System.out.println("_______________________________________________________________________________");
             System.out.println("\n");
 
             // sleep for 1 second
@@ -498,6 +699,78 @@ public class dragonGame {
             }
         }
     }
+
+    public void youWon(){
+        System.out.println("\n" +
+                "╭╮╱╱╭┳━━━┳╮╱╭╮╭╮╭╮╭┳━━━┳━╮╱╭┳╮\n" +
+                "┃╰╮╭╯┃╭━╮┃┃╱┃┃┃┃┃┃┃┃╭━╮┃┃╰╮┃┃┃\n" +
+                "╰╮╰╯╭┫┃╱┃┃┃╱┃┃┃┃┃┃┃┃┃╱┃┃╭╮╰╯┃┃\n" +
+                "╱╰╮╭╯┃┃╱┃┃┃╱┃┃┃╰╯╰╯┃┃╱┃┃┃╰╮┃┣╯\n" +
+                "╱╱┃┃╱┃╰━╯┃╰━╯┃╰╮╭╮╭┫╰━╯┃┃╱┃┃┣╮\n" +
+                "╱╱╰╯╱╰━━━┻━━━╯╱╰╯╰╯╰━━━┻╯╱╰━┻╯");
+    }
+
+    public void gameOver(){
+        System.out.println("\n" +
+                "╭━━━┳━━━┳━╮╭━┳━━━╮╭━━━┳╮╱╱╭┳━━━┳━━━╮\n" +
+                "┃╭━╮┃╭━╮┃┃╰╯┃┃╭━━╯┃╭━╮┃╰╮╭╯┃╭━━┫╭━╮┃\n" +
+                "┃┃╱╰┫┃╱┃┃╭╮╭╮┃╰━━╮┃┃╱┃┣╮┃┃╭┫╰━━┫╰━╯┃\n" +
+                "┃┃╭━┫╰━╯┃┃┃┃┃┃╭━━╯┃┃╱┃┃┃╰╯┃┃╭━━┫╭╮╭╯\n" +
+                "┃╰┻━┃╭━╮┃┃┃┃┃┃╰━━╮┃╰━╯┃╰╮╭╯┃╰━━┫┃┃╰╮\n" +
+                "╰━━━┻╯╱╰┻╯╰╯╰┻━━━╯╰━━━╯╱╰╯╱╰━━━┻╯╰━╯");
+        //newMusic.playmusic();
+    }
+    public void dragonFlyingArt(){
+        System.out.println("\t\t         \\`----.__                 ____               \n" +
+                "\t\t\t\t  |       `--._         <=#  , *--,           \n" +
+                " \t\t\t\t  /_             `-.    ,/  / `````            \n" +
+                " \t\t\t\t    \\__             (_.'  ,'                   THE DRAGON FLEW AWAY\n" +
+                "\t\t\t\t       \\__ ......'       \\___----^__           \n" +
+                "\t\t\t\t      ./               ,'           `.         \n" +
+                "\t\t\t  |\\     _.'   ___/ )\\...._\"   ___           \\        \n" +
+                "\t\t\t  | \\__.'  __.'            `\"\"'   `\"\"`.'\"\"\"`--\\       \n" +
+                "\t\t\t   \\____.-'                                           \n");
+
+        // sleep for 1 second
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dragonAttackArt(){
+        System.out.println("" +
+                "                                                                        |          |            \n" +
+                "                                                                        #          #            \n" +
+                "                                                                        %%        *%            \n" +
+                "                                                                       /*/       (#(\\           \n" +
+                "                                                                      /  %&      &( /,          \n" +
+                "       \\****__              ____                       #%%%%%         %/,%/     ((,/&          \n" +
+                "         |    *****\\_      --/ *\\-__                   #%%%%%         (/* #(    ./,/ /          \n" +
+                "         /_          (_    ./ ,/----'                  #%%%%%         (/* /(    ./,/ /          \n" +
+                "           \\__         (_./  /                         #%%%%%         %%%%&&    @##%#@/         \n" +
+                "              \\__           \\___----^__                #%%%%%         /,* (#    @%,/ //         \n" +
+                "               _/   _                  \\               #%%%%%         /,* (#    @%,/ //         \n" +
+                "        |    _/  __/ )\\\"\\ _____         *\\             #%%%%%         /,* (/****(%,/ //         \n" +
+                "        |\\__/   /    ^ ^       \\____      )            #%%%%%         /,* (# /\\ @%,/ //         \n" +
+                "         \\___--\"                    \\_____ )           #%%%%%         /,* (#    @%,/ //         \n" +
+                "                                          \"            #%%%%%         /,* (#    @%,/ //         \n" +
+                "                                                       #%%%%%         /,* (#    @%,( //         \n" +
+                "                                                       #%%%%%         /,* (#    @%,( (/         \n" +
+                "                                                       #%%%%%         /,* ##%.(@@@,( (/         \n" +
+                "                                                       #%%%%%        @@@@@@@@.@*%*@@@@@@ ");
+
+        // sleep for 1 second
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     /**
      * MAIN METHOD
