@@ -57,8 +57,8 @@ public class Dragon extends sameBehaviour {
         System.out.println("Dragon's Level: " + level);
         System.out.println("Dragon's HealthPoint: " + currentHp);
         System.out.println("Dragon's AttackPoint: " + atkPoint);
-        System.out.println("Dragon's Critical Chance: " + (critChance *100) + "%");
-        System.out.println("Dragon's Accuracy: " + (accuracy * 100) + "%");
+        System.out.println("Dragon's Critical Chance: " + String.format ("%.1f", critChance *100) + "%");
+        System.out.println("Dragon's Accuracy: " + String.format("%.1f", accuracy * 100) + "%");
     }
 
     //method for overwriting parent stats for load - izzul
