@@ -9,7 +9,7 @@ public class newMusic {
 
     static Clip clip;
 
-    public static void playmusicLose() {
+    public static void playMusicLose() {
 
         Scanner s = new Scanner(System.in);
 
@@ -42,7 +42,7 @@ public class newMusic {
         String responds = s.next();
     }
 
-    public static void playmusicWin() {
+    public static void playMusicWin() {
 
         Scanner s = new Scanner(System.in);
 
