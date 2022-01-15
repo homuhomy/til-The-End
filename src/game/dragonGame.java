@@ -1,5 +1,6 @@
 package game;
 
+import javax.sound.sampled.Clip;
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
@@ -23,6 +24,10 @@ public class dragonGame {
     private Tower tower;
     private Wall wall;
     public Citizens citizens;
+
+    public newMusic music;
+    public Clip clip;
+    public newMusic stopMusic;
 
     public int year = 1;
     public  int currentSeason = 0;
@@ -110,6 +115,7 @@ public class dragonGame {
                 System.out.println("3. Citizens");
                 System.out.println("4. I am all ready!");
                 System.out.println("5. Save");
+                System.out.println("6. Quit Game");
                 System.out.print("Please enter your command: ");
                 option = scan.nextInt();
 
@@ -129,8 +135,9 @@ public class dragonGame {
                     // Save current stats
                     case 5:
                         saveGame();
-                    // Invalid option
-                    default:
+                    case 6:
+                        System.exit(0);
+                    default: // Invalid option
                         break;
                 }
 
@@ -640,6 +647,9 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
+        String filepath = "dragonatk.wav";
+        newMusic.playMusicDragonAttack(filepath);
+
         System.out.println("\n");
         System.out.println("A dragon performs a sudden attack to your city!");
         dragon.displayStats();
@@ -692,14 +702,16 @@ public class dragonGame {
 
             // Check if won/lose
             if (dragon.getHp() <= 0) {
+                newMusic.stopMusic();
                 youWon();
                 System.out.println("You killed the dragon! You protected the city!");
-                newMusic.playmusicWin();
+                newMusic.playMusicWin();
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
+                newMusic.stopMusic();
                 gameOver();
                 System.out.println("You failed to protect your city!");
-                newMusic.playmusicLose();
+                newMusic.playMusicLose();
                 System.exit(0);
             }
 
