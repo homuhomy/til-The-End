@@ -17,6 +17,7 @@ public class Dragon extends sameBehaviour {
      */
     public Dragon() {
         atkPoint = 7;
+        critChance = 0.2f;
         recover();
     }
 
@@ -35,7 +36,6 @@ public class Dragon extends sameBehaviour {
     public void recover() {
         currentHp = hp; //go back to current hp
         currentAtkPoint = atkPoint;
-        critChance = 0.2f;
         accuracy = 0.8f;
     }
 
@@ -47,6 +47,9 @@ public class Dragon extends sameBehaviour {
         hp += 15;
         atkPoint++;
         critChance += 0.02f;
+
+
+
     }
 
     @Override

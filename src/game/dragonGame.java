@@ -64,6 +64,7 @@ public class dragonGame {
         dragonAttack();
         dragonFlyingArt();
         dragon.recover();
+        dragon.levelUp();
 
         //game loop starts here
         while(true){
@@ -79,7 +80,8 @@ public class dragonGame {
             //code for main menu
             System.out.println("\n");
             System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
-            System.out.println("EVENT 1: " + event1 + " and EVENT 2: " + event2);
+            System.out.println("EVENT 1: " + event1);
+            System.out.println("EVENT 2: " + event2);
             System.out.println("Tax received from citizens this season: " + tax);
             System.out.println("Year: " + year);
             System.out.println("Season: " + SEASONS[currentSeason]);
@@ -428,9 +430,11 @@ public class dragonGame {
                         System.out.println("Wall Health Increased by 75");
                         break;
                     case 2:
-                        gold-=100;
-                        wall.IncreaseWallBlock();
-                        System.out.println("Wall Block Chance Increased by 5%");
+                        if(wall.getBlockPercent()<0.5f){
+                            gold-=50;
+                            wall.IncreaseWallBlock();
+                            System.out.println("Wall Block Chance Increased by 5%");
+                        }
                         break;
                     case 3: break;
                     default:
