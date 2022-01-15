@@ -427,13 +427,19 @@ public class dragonGame {
                     case 1:
                         gold-=100;
                         wall.IncreaseWallHp();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Wall Health Increased by 75");
+                        System.out.println("==============================================");
                         break;
                     case 2:
                         if(wall.getBlockPercent()<0.5f){
                             gold-=50;
                             wall.IncreaseWallBlock();
+                            System.out.println("\n");
+                            System.out.println("==============================================");
                             System.out.println("Wall Block Chance Increased by 5%");
+                            System.out.println("==============================================");
                         }
                         break;
                     case 3: break;
@@ -481,23 +487,35 @@ public class dragonGame {
                     case 1:
                         gold -= 100;
                         tower.upAtkPoint();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Tower AttackPoint upgraded +1");
+                        System.out.println("==============================================");
                         break;
                     case 2:
                         gold -= 100;
                         tower.upCritChance();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println(" Tower Critical Chance Upgraded +5");
+                        System.out.println("==============================================");
                         break;
                     case 3:
                         gold -= 100;
                         tower.upAccuracy();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println(" Tower Accuracy Upgraded 4%");
+                        System.out.println("==============================================");
                         break;
                     case 4:
                         break;
 
                     default:
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Invalid Option Selected.");
+                        System.out.println("==============================================");
                         break;
                 }
             }
@@ -542,38 +560,59 @@ public class dragonGame {
                     case 1:
                         gold -= 50;
                         citizens.decreaseEmotional();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Emotional decreased -50");
+                        System.out.println("==============================================");
                         break;
                     case 2:
                         gold -= 50;
                         citizens.decreaseNervous();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Nervous decreased -50");
+                        System.out.println("==============================================");
                         break;
                     case 3:
                         gold -= 50;
                         citizens.decreaseLazy();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Lazy decreased -50");
+                        System.out.println("==============================================");
                         break;
                     case 4:
                         gold -= 50;
                         citizens.increaseBerserk();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Berserk Increased +50");
+                        System.out.println("==============================================");
                         break;
                     case 5:
                         gold -= 50;
                         citizens.increaseDiligent();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Diligent Increased +50");
+                        System.out.println("==============================================");
                         break;
                     case 6:
                         gold -= 50;
                         citizens.increaseFearless();
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Citizens Fearless Increased +50");
+                        System.out.println("==============================================");
                         break;
                     case 7:
                         break;
 
                     default:
+                        System.out.println("\n");
+                        System.out.println("==============================================");
                         System.out.println("Invalid Option Selected.");
+                        System.out.println("==============================================");
                         break;
                 }
             }
@@ -639,11 +678,12 @@ public class dragonGame {
             if (dragon.getHp() <= 0) {
                 youWon();
                 System.out.println("You killed the dragon! You protected the city!");
+                newMusic.playmusicWin();
                 System.exit(0);
             } else if (wall.getHp() <= 0) {
                 gameOver();
                 System.out.println("You failed to protect your city!");
-                newMusic.playmusic();
+                newMusic.playmusicLose();
                 System.exit(0);
             }
 
