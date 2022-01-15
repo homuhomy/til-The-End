@@ -647,8 +647,8 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
-        String filepath = "dragonatk.wav";
-        newMusic.playMusicDragonAttack(filepath);
+        String dragonAttackPath = "dragonatk.wav";
+        newMusic.playMusicDragonAttack(dragonAttackPath);
 
         System.out.println("\n");
         System.out.println("A dragon performs a sudden attack to your city!");
