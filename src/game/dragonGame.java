@@ -99,6 +99,9 @@ public class dragonGame {
 
 
         if (Load == 2) {
+            String menumusic = "menumusic.wav";
+            newMusic.playMusic(menumusic);
+
             //code for main menu
             System.out.println("\n");
             System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
@@ -768,6 +771,7 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
+        newMusic.stopMusic();
         String dragonAttackPath = "dragonatk.wav";
         newMusic.playMusic(dragonAttackPath);
 
