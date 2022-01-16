@@ -591,7 +591,7 @@ public class dragonGame {
                         break;
                     case 2:
                         if(wall.getBlockPercent()<0.5f){
-                            gold-=50;
+                            gold-=100;
                             wall.IncreaseWallBlock();
                             System.out.println("\n");
                             System.out.println("==============================================");
