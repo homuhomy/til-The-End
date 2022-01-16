@@ -654,20 +654,24 @@ public class dragonGame {
                         System.out.println("==============================================");
                         break;
                     case 2:
-                        gold -= 100;
-                        tower.upCritChance();
-                        System.out.println("\n");
-                        System.out.println("==============================================");
-                        System.out.println(" Tower Critical Chance Upgraded +5");
-                        System.out.println("==============================================");
+                        if (tower.getCritChance()<0.5f) {
+                            gold -= 100;
+                            tower.upCritChance();
+                            System.out.println("\n");
+                            System.out.println("==============================================");
+                            System.out.println(" Tower Critical Chance Upgraded +5");
+                            System.out.println("==============================================");
+                        }
                         break;
                     case 3:
-                        gold -= 100;
-                        tower.upAccuracy();
-                        System.out.println("\n");
-                        System.out.println("==============================================");
-                        System.out.println(" Tower Accuracy Upgraded 4%");
-                        System.out.println("==============================================");
+                        if (tower.getTowerAccuracy()<1.0f) {
+                            gold -= 100;
+                            tower.upAccuracy();
+                            System.out.println("\n");
+                            System.out.println("==============================================");
+                            System.out.println(" Tower Accuracy Upgraded 4%");
+                            System.out.println("==============================================");
+                        }
                         break;
                     case 4:
                         break;
