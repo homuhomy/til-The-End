@@ -59,6 +59,9 @@ public class dragonGame {
      */
     public void run(){
         //new game
+        String titleScreenMusic = "titleScreenMusic.wav";
+        newMusic.playMusic(titleScreenMusic);
+
         System.out.println("Till The End");
         System.out.println("Can you defeat the dragon?");
         System.out.println("\n");
@@ -83,7 +86,6 @@ public class dragonGame {
                 e.printStackTrace();
             }
 
-            dragonAttackArt();
             dragonAttack();
             dragonFlyingArt();
             dragon.levelUp();
@@ -99,6 +101,10 @@ public class dragonGame {
 
 
         if (Load == 2) {
+            newMusic.stopMusic();
+            String menumusic = "menumusic.wav";
+            newMusic.playMusic(menumusic);
+
             //code for main menu
             System.out.println("\n");
             System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
@@ -176,7 +182,6 @@ public class dragonGame {
                 citizens.increaseFearless(-100);
             }
 
-            dragonAttackArt();
             dragonAttack();
             dragonFlyingArt();
 
@@ -221,6 +226,7 @@ public class dragonGame {
             System.out.println("Gold: " + gold);
 
             // music for menu start play method called from newmusic class
+            newMusic.stopMusic();
             String menumusic = "menumusic.wav";
             newMusic.playMusic(menumusic);
 
@@ -291,7 +297,6 @@ public class dragonGame {
                 citizens.increaseFearless(-100);
             }
 
-            dragonAttackArt();
             dragonAttack();
             dragonFlyingArt();
 
@@ -769,17 +774,27 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
+        newMusic.stopMusic();
         String dragonAttackPath = "dragonatk.wav";
         newMusic.playMusic(dragonAttackPath);
 
+        dragonAttackArt();
         System.out.println("\n");
         System.out.println("A dragon performs a sudden attack to your city!");
+        // sleep for 2 second
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         dragon.displayStats();
         System.out.println("\n");
 
-        // sleep for 3 second
+        // sleep for 1.5 second
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
