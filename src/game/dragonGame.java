@@ -71,12 +71,12 @@ public class dragonGame {
                 "░░░╚═╝░░░╚═╝╚══════╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚══════╝╚═╝░░╚══╝╚═════╝░");
         //System.out.println("Till The End");
         //System.out.println("Can you defeat the dragon?");
-        System.out.println("                    Ｃａｎ ｙｏｕ ｄｅｆｅａｔ ｔｈｅ ｄｒａｇｏｎ？");
+        System.out.println("                    Ｃａｎ ｙｏｕ ｄｅｆｅａｔ ｔｈｅ ｄｒａｇｏｎ？                      ");
         System.out.println("\n");
 
         //new game option or continue game (load)
-        System.out.println("                               1 : New Game");
-        System.out.println("                               2 : Load Game");
+        System.out.println("                               1 : New Game   ");
+        System.out.println("                               2 : Load Game  ");
         Load = scan.nextInt();
 
         if (Load != 2) {
@@ -988,8 +988,9 @@ public class dragonGame {
         }
         System.out.println("\n");
         System.out.println("==============================================");
-        System.out.println("You successfully saved your progress.");
+        System.out.println("Your progress has been saved successfully.");
         System.out.println("==============================================");
+
 
 
     }
