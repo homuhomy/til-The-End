@@ -329,7 +329,7 @@ public class dragonGame {
     }
 
     /**
-     * Executes a random event based on the current season
+     * Executes two random events based on the current season
      *
      * @return the executed event
      */
