@@ -602,6 +602,12 @@ public class dragonGame {
                             System.out.println("Wall Block Chance Increased by 5%");
                             System.out.println("==============================================");
                         }
+                        else {
+                            System.out.println("\n");
+                            System.out.println("==============================================");
+                            System.out.println("Wall Block Percentage is at Max!!");
+                            System.out.println("==============================================");
+                        }
                         break;
                     case 3: break;
                     default:
@@ -662,6 +668,12 @@ public class dragonGame {
                             System.out.println(" Tower Critical Chance Upgraded +5");
                             System.out.println("==============================================");
                         }
+                        else {
+                            System.out.println("\n");
+                            System.out.println("==============================================");
+                            System.out.println("Tower Critical Chance is at Max!!");
+                            System.out.println("==============================================");
+                        }
                         break;
                     case 3:
                         if (tower.getTowerAccuracy()<1.0f) {
@@ -670,6 +682,12 @@ public class dragonGame {
                             System.out.println("\n");
                             System.out.println("==============================================");
                             System.out.println(" Tower Accuracy Upgraded 4%");
+                            System.out.println("==============================================");
+                        }
+                        else {
+                            System.out.println("\n");
+                            System.out.println("==============================================");
+                            System.out.println("Tower Accuraccy is at Max!!");
                             System.out.println("==============================================");
                         }
                         break;
