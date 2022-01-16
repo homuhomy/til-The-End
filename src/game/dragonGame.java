@@ -61,16 +61,6 @@ public class dragonGame {
         //new game
         System.out.println("Till The End");
         System.out.println("Can you defeat the dragon?");
-        //sleep for 1.5 sec
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("\n");
-        System.out.println("Citizen A: ...wait what is that?");
-        System.out.println("Citizen B: ...is that a dragon?!");
-        System.out.println("Citizens: PREPARE TO PROTECT OUR CITY!!");
         System.out.println("\n");
 
         //new game option or continue game (load)
@@ -79,6 +69,20 @@ public class dragonGame {
         Load = scan.nextInt();
 
         if (Load != 2) {
+
+            System.out.println("\n");
+            System.out.println("Citizen A: ...wait what is that?");
+            System.out.println("Citizen B: ...is that a dragon?!");
+            System.out.println("Citizens: PREPARE TO PROTECT OUR CITY!!");
+            System.out.println("\n");
+
+            //sleep for 1.5 sec
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             dragonAttackArt();
             dragonAttack();
             dragonFlyingArt();
@@ -138,7 +142,7 @@ public class dragonGame {
                     case 5:
                         saveGame();
                         break;
-                    case 6:
+                    case 6: //quit game
                         System.exit(0);
                     default: // Invalid option
                         break;
@@ -959,6 +963,7 @@ public class dragonGame {
         }catch(Exception e) {
             e.printStackTrace();
         }
+        System.out.println("You successfully saved your progress.");
 
     }
 
