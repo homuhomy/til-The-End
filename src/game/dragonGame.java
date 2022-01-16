@@ -59,7 +59,7 @@ public class dragonGame {
      */
     public void run(){
         //new game
-        String titleScreenMusic = "titleScreenMusic.wav";
+        String titleScreenMusic = "titleScreenMusic2.wav";
         newMusic.playMusic(titleScreenMusic);
 
         System.out.println("Till The End");
