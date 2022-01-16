@@ -59,6 +59,14 @@ public class dragonGame {
      */
     public void run(){
         //new game
+        System.out.println("Till The End");
+        System.out.println("Can you defeat the dragon?");
+        //sleep for 1.5 sec
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("\n");
         System.out.println("Citizen A: ...wait what is that?");
         System.out.println("Citizen B: ...is that a dragon?!");
@@ -66,22 +74,127 @@ public class dragonGame {
         System.out.println("\n");
 
         //new game option or continue game (load)
-        System.out.println("1 : Proceed to the game");
-        System.out.println("2 : Load the previous save");
+        System.out.println("1 : New Game");
+        System.out.println("2 : Load Game");
         Load = scan.nextInt();
 
+        if (Load != 2) {
+            dragonAttackArt();
+            dragonAttack();
+            dragonFlyingArt();
+            dragon.levelUp();
+            dragon.recover();
+        }
+
+        //first iteration for *load* game--------------------------------------------------------------------------------
         switch(Load) {
             case 1: break;
             case 2: loadGame();
             default: break;
         }
-        dragonAttackArt();
 
-        dragonAttack();
-        dragonFlyingArt();
-        dragon.levelUp();
-        dragon.recover();
 
+        if (Load == 2) {
+            //code for main menu
+            System.out.println("\n");
+            System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
+            System.out.println("EVENT 1: " + event1);
+            System.out.println("EVENT 2: " + event2);
+            System.out.println("Tax received from citizens this season: " + tax);
+            System.out.println("Year: " + year);
+            System.out.println("Season: " + SEASONS[currentSeason]);
+            System.out.println("Gold: " + gold);
+
+
+            // command panel
+            int option = 0;
+            do {
+                System.out.println("\n");
+                System.out.println("____________________________MAIN MENU____________________________");
+                System.out.println("Select towers, walls and citizens to upgrade their stats OR Start Game.");
+                System.out.println("1. Tower");
+                System.out.println("2. Wall");
+                System.out.println("3. Citizens");
+                System.out.println("4. I am all ready!");
+                System.out.println("5. Save");
+                System.out.println("6. Quit Game");
+                System.out.print("Please enter your command: ");
+                option = scan.nextInt();
+
+                switch (option) {
+                    case 1:
+                        TowerMenu();
+                        break;
+                    case 2:
+                        wallMenu();
+                        break;
+                    case 3:
+                        citizensMenu();
+                        break;
+                    // Move to dragon attack
+                    case 4:
+                        break;
+                    // Save current stats
+                    case 5:
+                        saveGame();
+                        break;
+                    case 6:
+                        System.exit(0);
+                    default: // Invalid option
+                        break;
+                }
+
+            } while (option != 4);
+
+            // apply triggered emotions (from citizens) if any to tower/wall stats
+            if (citizens.getEmotional() >= 100) {
+                tower.decreaseAtkPoint();
+                citizens.increaseEmotional(-100);
+            }
+            if (citizens.getNervous() >= 100) {
+                tower.decreaseAccuracy(0.05f); //decrease 5%
+                citizens.increaseNervous(-100);
+            }
+            if (citizens.getLazy() >= 100) {
+                wall.decreaseHp(100);
+                citizens.increaseLazy(-100);
+            }
+            if (citizens.getBerserk() >= 100) {
+                tower.upAtkPoint();
+                citizens.increaseBerserk(-100);
+            }
+            if (citizens.getDiligent() >= 100) {
+                wall.IncreaseWallHp();
+                citizens.increaseDiligent(-100);
+            }
+            if (citizens.getFearless() >= 100) {
+                tower.upCritChance();
+                citizens.increaseFearless(-100);
+            }
+
+            dragonAttackArt();
+            dragonAttack();
+            dragonFlyingArt();
+
+            //dragon level up and recovery AFTER dragonAttack is over and no win/lose yet
+            dragon.levelUp();
+            dragon.recover();
+
+            // reset event's temporary effects
+            if ((SEASONS[currentSeason].equals("Autumn") && event1.contains("Rainy")) || event2.contains("Rainy") || (SEASONS[currentSeason].equals("Winter")
+                    && event1.contains("Hunger") || event2.contains("Hunger"))){
+                tower.decreaseAccuracy(0.02f);
+            }
+
+
+            // go to next season
+            currentSeason++;
+            if (currentSeason >= SEASONS.length) {
+                currentSeason = 0;
+                year++;
+            }
+        }
+        //--------------------------------------------------------------------------------------------------------------
         //game loop starts here
         while(true){
             //execute 2 random events
@@ -139,6 +252,7 @@ public class dragonGame {
                     // Save current stats
                     case 5:
                         saveGame();
+                        break;
                     case 6:
                         System.exit(0);
                     default: // Invalid option
@@ -819,7 +933,7 @@ public class dragonGame {
             dStorage.currentEvent2 = event2;
             dStorage.currentSeason = currentSeason;
             //dragon stats
-            dStorage.dragonHP = dragon.getHp();
+            dStorage.dragonHP = dragon.getDragonHP();
             dStorage.dragonLevel = dragon.getDragonLevel();
             dStorage.dragonAccuracy = dragon.getDragonAccuracy();
             dStorage.dragonAttackPoint = dragon.getDragonAttackPoint();
@@ -882,6 +996,11 @@ public class dragonGame {
             citizens.OWberserk(dStorage.berserk);
             citizens.OWdiligent(dStorage.diligent);
             citizens.OWfearless(dStorage.fearless);
+            System.out.println(dStorage.dragonLevel);
+            System.out.println(dStorage.dragonHP);
+            System.out.println(dStorage.dragonAttackPoint);
+            System.out.println(dStorage.dragonCritChance);
+            System.out.println(dStorage.dragonAccuracy);
         }catch(Exception e) {
             e.printStackTrace();
         }
@@ -895,5 +1014,6 @@ public class dragonGame {
     public static void main(String args[]) {
 
         new dragonGame().run();
+
     }
 }

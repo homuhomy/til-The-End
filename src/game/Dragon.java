@@ -55,7 +55,7 @@ public class Dragon extends sameBehaviour {
     @Override
     public void displayStats() {
         System.out.println("Dragon's Level: " + level);
-        System.out.println("Dragon's HealthPoint: " + currentHp);
+        System.out.println("Dragon's HealthPoint: " + hp);
         System.out.println("Dragon's AttackPoint: " + atkPoint);
         System.out.println("Dragon's Critical Chance: " + String.format ("%.1f", critChance *100) + "%");
         System.out.println("Dragon's Accuracy: " + String.format("%.1f", accuracy * 100) + "%");
@@ -72,7 +72,7 @@ public class Dragon extends sameBehaviour {
         accuracy = a;
     }
     public void OWdragonAttackPoint(int a) {
-        currentAtkPoint = a;
+        atkPoint = a;
     }
     public void OWdragonCritChance(float a) {
         critChance = a;
@@ -99,6 +99,9 @@ public class Dragon extends sameBehaviour {
     }
     public float getDragonAccuracy () {
         return accuracy;
+    }
+    public int getDragonHP() {
+        return hp;
     }
 
 }
