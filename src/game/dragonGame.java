@@ -822,8 +822,15 @@ public class dragonGame {
                 System.out.println("Wall successfully blocked dragon's attack!");
                 System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             } else {
-                wall.decreaseHp(atkPoint);
-                System.out.println("Dragon attacked our wall!");
+                if (isCriticalAtk){
+                    atkPoint += (int) (atkPoint * 0.5f);
+                    wall.decreaseHp(atkPoint);
+                    System.out.println("Dragon attacked our wall with critical attack!");
+                }
+                else{
+                    wall.decreaseHp(atkPoint);
+                    System.out.println("Dragon attacked our wall!");
+                }
                 System.out.println("Wall's health point minus " + atkPoint);
                 System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             }
