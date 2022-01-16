@@ -59,10 +59,17 @@ public class dragonGame {
      */
     public void run(){
         //new game
-        String titleScreenMusic = "titleScreenMusic.wav";
+        String titleScreenMusic = "TitleTheme .wav";
         newMusic.playMusic(titleScreenMusic);
 
-        System.out.println("Till The End");
+        System.out.println(" \n" +
+                "████████╗██╗██╗░░░░░██╗░░░░░  ████████╗██╗░░██╗███████╗  ███████╗███╗░░██╗██████╗░\n" +
+                "╚══██╔══╝██║██║░░░░░██║░░░░░  ╚══██╔══╝██║░░██║██╔════╝  ██╔════╝████╗░██║██╔══██╗\n" +
+                "░░░██║░░░██║██║░░░░░██║░░░░░  ░░░██║░░░███████║█████╗░░  █████╗░░██╔██╗██║██║░░██║\n" +
+                "░░░██║░░░██║██║░░░░░██║░░░░░  ░░░██║░░░██╔══██║██╔══╝░░  ██╔══╝░░██║╚████║██║░░██║\n" +
+                "░░░██║░░░██║███████╗███████╗  ░░░██║░░░██║░░██║███████╗  ███████╗██║░╚███║██████╔╝\n" +
+                "░░░╚═╝░░░╚═╝╚══════╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚══════╝╚═╝░░╚══╝╚═════╝░");
+        //System.out.println("Till The End");
         System.out.println("Can you defeat the dragon?");
         System.out.println("\n");
 
