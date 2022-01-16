@@ -70,13 +70,12 @@ public class dragonGame {
                 "░░░██║░░░██║███████╗███████╗  ░░░██║░░░██║░░██║███████╗  ███████╗██║░╚███║██████╔╝\n" +
                 "░░░╚═╝░░░╚═╝╚══════╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚══════╝╚═╝░░╚══╝╚═════╝░");
         //System.out.println("Till The End");
-        //System.out.println("Can you defeat the dragon?");
-        System.out.println("                    Ｃａｎ ｙｏｕ ｄｅｆｅａｔ ｔｈｅ ｄｒａｇｏｎ？                      ");
+        System.out.println("Can you defeat the dragon?");
         System.out.println("\n");
 
         //new game option or continue game (load)
-        System.out.println("                               1 : New Game   ");
-        System.out.println("                               2 : Load Game  ");
+        System.out.println("1 : New Game");
+        System.out.println("2 : Load Game");
         Load = scan.nextInt();
 
         if (Load != 2) {
@@ -109,6 +108,10 @@ public class dragonGame {
 
 
         if (Load == 2) {
+            //code to prevent dragon hp bug
+            int dragonLoadHP = 1;
+            //
+
             newMusic.stopMusic();
             String menumusic = "menumusic.wav";
             newMusic.playMusic(menumusic);
@@ -329,7 +332,7 @@ public class dragonGame {
     }
 
     /**
-     * Executes two random events based on the current season
+     * Executes a random event based on the current season
      *
      * @return the executed event
      */
@@ -592,7 +595,7 @@ public class dragonGame {
                         break;
                     case 2:
                         if(wall.getBlockPercent()<0.5f){
-                            gold-=100;
+                            gold-=50;
                             wall.IncreaseWallBlock();
                             System.out.println("\n");
                             System.out.println("==============================================");
@@ -823,7 +826,6 @@ public class dragonGame {
                 System.out.println("Current Wall's HealthPoint: " + wall.getHp());
             } else {
                 if (isCriticalAtk){
-                    atkPoint += (int) (atkPoint * 0.5f);
                     wall.decreaseHp(atkPoint);
                     System.out.println("Dragon attacked our wall with critical attack!");
                 }
@@ -993,12 +995,7 @@ public class dragonGame {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        System.out.println("\n");
-        System.out.println("==============================================");
-        System.out.println("Your progress has been saved successfully.");
-        System.out.println("==============================================");
-
-
+        System.out.println("You successfully saved your progress.");
 
     }
 

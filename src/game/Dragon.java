@@ -61,22 +61,6 @@ public class Dragon extends sameBehaviour {
         System.out.println("Dragon's Accuracy: " + String.format("%.1f", accuracy * 100) + "%");
     }
 
-    //method for overwriting parent stats for load - izzul
-    public void OWdragonHP(int a) {
-        hp = a;
-    }
-    public void OWdragonLevel(int a) {
-        level = a;
-    }
-    public void OWdragonAccuracy(float a) {
-        accuracy = a;
-    }
-    public void OWdragonAttackPoint(int a) {
-        atkPoint = a;
-    }
-    public void OWdragonCritChance(float a) {
-        critChance = a;
-    }
 
     //getters
     public int getHp() {
@@ -84,7 +68,7 @@ public class Dragon extends sameBehaviour {
     }
 
     public int getAtkPoint() {
-        return currentAtkPoint;
+        return atkPoint;
     }
 
     // izzul
@@ -102,6 +86,23 @@ public class Dragon extends sameBehaviour {
     }
     public int getDragonHP() {
         return hp;
+    }
+
+    //method for overwriting parent stats for load - izzul
+    public void OWdragonHP(int a) {
+        hp = a;
+    }
+    public void OWdragonLevel(int a) {
+        level = a;
+    }
+    public void OWdragonAccuracy(float a) {
+        accuracy = a;
+    }
+    public void OWdragonAttackPoint(int a) {
+        atkPoint = a;
+    }
+    public void OWdragonCritChance(float a) {
+        critChance = a;
     }
 
 }
