@@ -59,16 +59,24 @@ public class dragonGame {
      */
     public void run(){
         //new game
-        String titleScreenMusic = "titleScreenMusic.wav";
+        String titleScreenMusic = "TitleTheme .wav";
         newMusic.playMusic(titleScreenMusic);
 
-        System.out.println("Till The End");
-        System.out.println("Can you defeat the dragon?");
+        System.out.println(" \n" +
+                "████████╗██╗██╗░░░░░██╗░░░░░  ████████╗██╗░░██╗███████╗  ███████╗███╗░░██╗██████╗░\n" +
+                "╚══██╔══╝██║██║░░░░░██║░░░░░  ╚══██╔══╝██║░░██║██╔════╝  ██╔════╝████╗░██║██╔══██╗\n" +
+                "░░░██║░░░██║██║░░░░░██║░░░░░  ░░░██║░░░███████║█████╗░░  █████╗░░██╔██╗██║██║░░██║\n" +
+                "░░░██║░░░██║██║░░░░░██║░░░░░  ░░░██║░░░██╔══██║██╔══╝░░  ██╔══╝░░██║╚████║██║░░██║\n" +
+                "░░░██║░░░██║███████╗███████╗  ░░░██║░░░██║░░██║███████╗  ███████╗██║░╚███║██████╔╝\n" +
+                "░░░╚═╝░░░╚═╝╚══════╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚══════╝╚═╝░░╚══╝╚═════╝░");
+        //System.out.println("Till The End");
+        //System.out.println("Can you defeat the dragon?");
+        System.out.println("                    Ｃａｎ ｙｏｕ ｄｅｆｅａｔ ｔｈｅ ｄｒａｇｏｎ？");
         System.out.println("\n");
 
         //new game option or continue game (load)
-        System.out.println("1 : New Game");
-        System.out.println("2 : Load Game");
+        System.out.println("                               1 : New Game");
+        System.out.println("                               2 : Load Game");
         Load = scan.nextInt();
 
         if (Load != 2) {
@@ -584,7 +592,7 @@ public class dragonGame {
                         break;
                     case 2:
                         if(wall.getBlockPercent()<0.5f){
-                            gold-=50;
+                            gold-=100;
                             wall.IncreaseWallBlock();
                             System.out.println("\n");
                             System.out.println("==============================================");
@@ -978,7 +986,11 @@ public class dragonGame {
         }catch(Exception e) {
             e.printStackTrace();
         }
+        System.out.println("\n");
+        System.out.println("==============================================");
         System.out.println("You successfully saved your progress.");
+        System.out.println("==============================================");
+
 
     }
 
