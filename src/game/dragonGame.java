@@ -772,7 +772,7 @@ public class dragonGame {
      * Performs dragon attack. The dragon attacks 10 times
      */
     private void dragonAttack() {
-        newMusic.stopMusic();
+        //newMusic.stopMusic();
         String dragonAttackPath = "dragonatk.wav";
         newMusic.playMusic(dragonAttackPath);
 
