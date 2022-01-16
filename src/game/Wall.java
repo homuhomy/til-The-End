@@ -1,6 +1,7 @@
 package game;
 
 public class Wall {
+
     private int hp=100;
     private float blockPercent=0.1f;
 

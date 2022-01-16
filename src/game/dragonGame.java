@@ -223,6 +223,7 @@ public class dragonGame {
             System.out.println("Season: " + SEASONS[currentSeason]);
             System.out.println("Gold: " + gold);
 
+            // music for menu start play method called from newmusic class
             String menumusic = "menumusic.wav";
             newMusic.playMusic(menumusic);
 
@@ -251,7 +252,7 @@ public class dragonGame {
                     case 3:
                         citizensMenu();
                         break;
-                    // Move to dragon attack
+                    // stop menu music and Move to dragon attack
                     case 4:
                         newMusic.stopMusic();
                         break;
