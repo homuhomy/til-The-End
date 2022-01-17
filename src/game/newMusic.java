@@ -13,31 +13,20 @@ public class newMusic {
     public static void playSound(String soundLocation) {
 
         Scanner s = new Scanner(System.in);
-
-        File file = new File(soundLocation);
         AudioInputStream audioStream = null;
-        try {
-            audioStream = AudioSystem.getAudioInputStream(file);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //Clip clip = null;
-        try {
-            clip = AudioSystem.getClip();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
-        try {
-            clip.open(audioStream);
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        clip.start();
+        try {
+            File file = new File(soundLocation);
+            if (file.exists()) {
+                audioStream = AudioSystem.getAudioInputStream(file);
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+            } else
+                System.out.println("Cant find file!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         System.out.println("\n Press any key and enter to exit game.");
         String responds = s.next();

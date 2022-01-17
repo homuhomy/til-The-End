@@ -228,7 +228,7 @@ public class dragonGame {
 
             //code for main menu
             System.out.println("\n");
-            System.out.println("____________________________A RANDOM EVENT HAS OCCURRED!!____________________________");
+            System.out.println("___________________________2 RANDOM EVENTS HAS OCCURRED!!____________________________");
             System.out.println("EVENT 1: " + event1);
             System.out.println("EVENT 2: " + event2);
             System.out.println("Tax received from citizens this season: " + tax);
