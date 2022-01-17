@@ -70,12 +70,12 @@ public class dragonGame {
                 "░░░██║░░░██║███████╗███████╗  ░░░██║░░░██║░░██║███████╗  ███████╗██║░╚███║██████╔╝\n" +
                 "░░░╚═╝░░░╚═╝╚══════╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚══════╝╚═╝░░╚══╝╚═════╝░");
         //System.out.println("Till The End");
-        System.out.println("Can you defeat the dragon?");
+        System.out.println("\t\t\t\t\t ＣＡＮ ＹＯＵ ＤＥＦＥＡＴ ＴＨＥ ＤＲＡＧＯＮ？");
         System.out.println("\n");
 
         //new game option or continue game (load)
-        System.out.println("1 : New Game");
-        System.out.println("2 : Load Game");
+        System.out.println("\t\t\t\t\t\t\t\t1 : New Game");
+        System.out.println("\t\t\t\t\t\t\t\t2 : Load Game");
         Load = scan.nextInt();
 
         if (Load != 2) {
@@ -1017,7 +1017,10 @@ public class dragonGame {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        System.out.println("You successfully saved your progress.");
+        System.out.println("\n");
+        System.out.println("==============================================");
+        System.out.println("Your progress has been saved successfully.");
+        System.out.println("==============================================");
 
     }
 
