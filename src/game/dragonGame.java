@@ -70,7 +70,7 @@ public class dragonGame {
                 "░░░██║░░░██║███████╗███████╗  ░░░██║░░░██║░░██║███████╗  ███████╗██║░╚███║██████╔╝\n" +
                 "░░░╚═╝░░░╚═╝╚══════╝╚══════╝  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚══════╝╚═╝░░╚══╝╚═════╝░");
         //System.out.println("Till The End");
-        System.out.println("\t\t\t\t\t ＣＡＮ ＹＯＵ ＤＥＦＥＡＴ ＴＨＥ ＤＲＡＧＯＮ？");
+        System.out.println("\t\t\t\t\t ＣＡＮ ＹＯＵ ＤＥＦＥＡＴ ＴＨＥ ＤＲＡＧＯＮ？ ");
         System.out.println("\n");
 
         //new game option or continue game (load)
