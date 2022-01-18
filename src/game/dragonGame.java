@@ -1058,11 +1058,6 @@ public class dragonGame {
             citizens.OWberserk(dStorage.berserk);
             citizens.OWdiligent(dStorage.diligent);
             citizens.OWfearless(dStorage.fearless);
-            System.out.println(dStorage.dragonLevel);
-            System.out.println(dStorage.dragonHP);
-            System.out.println(dStorage.dragonAttackPoint);
-            System.out.println(dStorage.dragonCritChance);
-            System.out.println(dStorage.dragonAccuracy);
         }catch(Exception e) {
             e.printStackTrace();
         }
